@@ -1,5 +1,7 @@
 { lib, pkgs, pkgs-unstable, ... }: rec {
-  imports = [];
+  imports = [
+    home/zsh/zsh.nix
+  ];
   home = {
     username = "marc";
     homeDirectory = "/home/marc";
@@ -29,31 +31,38 @@
       git
       neofetch
       lshw
+      ffmpeg
+
 
       # ----- dev -------
       go
+      gcc
 
       # ----- applications -----
     
-        # communication
-        discord
-        signal-desktop
-        thunderbird
-        qpwgraph
+      # communication
+      discord
+      signal-desktop
+      thunderbird
+      qpwgraph
 
-        # productivity
-        logseq
-        obsidian
-	onlyoffice-bin
-        
-        # other
-        qbittorrent
-        
-        vlc
+      # productivity
+      logseq
+      obsidian
+      onlyoffice-bin
+      xournalpp
+      
+      # other
+      qbittorrent
+      vlc
+      gnomecast
+      stellarium
+      handbrake
 
-        gnomecast
+      # games
+      steam
 
-	plasma-browser-integration
+	    plasma-browser-integration
       	
 	
     ];
@@ -124,6 +133,12 @@
     extensions = with pkgs.vscode-extensions; [
       
     ];
+  };
+
+  programs.git = {
+    enable = true;
+    userName = "Marc Lavergne";
+    userEmail = "marc.lavergne@hotmail.com";
   };
 }
 
