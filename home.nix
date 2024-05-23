@@ -1,6 +1,6 @@
 { lib, pkgs, pkgs-unstable, ... }: rec {
   imports = [
-    home/zsh/zsh.nix
+    ./home/zsh/zsh.nix
   ];
   home = {
     username = "marc";
@@ -29,7 +29,7 @@
       globalprotect-openconnect
       tmux
       git
-      neofetch
+      fastfetch
       lshw
       ffmpeg
 

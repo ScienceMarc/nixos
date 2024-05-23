@@ -29,7 +29,11 @@
     nixosConfigurations = {
       "marc-laptop" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-	modules = [ ./system/configuration.nix ];
+	  modules = [ ./system/configuration.nix ];
+      };
+      "marc-desktop" = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [ ./system/desktop.nix ];
       };
     };
   };

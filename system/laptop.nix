@@ -1,9 +1,12 @@
 {config, pkgs, ...}:
 
 {
+    imports = [ ./laptop/hardware-configuration.nix ./shared.nix ];
+
+    networking.hostName = "marc-laptop"; # Define your hostname.
+
     services.thermald.enable = true;
     powerManagement.enable = true;
-    networking.hostName = "marc-laptop"; # Define your hostname.
 
     # Nvidia settings
     # Enable OpenGL
