@@ -10,26 +10,26 @@
     homeConfigurations = {
       marc = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
-              system = "x86_64-linux";
-              config.allowUnfree = true;
-              # required by logseq and obsidian
-              config.permittedInsecurePackages = [
+          system = "x86_64-linux";
+          config.allowUnfree = true;
+          # required by logseq and obsidian
+          config.permittedInsecurePackages = [
             "electron-25.9.0"
           ];
         };
         extraSpecialArgs = { 
           pkgs-unstable = import nixpkgs {
-                system = "x86_64-linux";
-                config.allowUnfree = true;
-              };
-            };
-            modules = [ ./home.nix ];
+            system = "x86_64-linux";
+            config.allowUnfree = true;
+          };
+        };
+        modules = [ ./home.nix ];
       };
     };
     nixosConfigurations = {
       "marc-laptop" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-	  modules = [ ./system/configuration.nix ];
+	      modules = [ ./system/laptop.nix ];
       };
       "marc-desktop" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";

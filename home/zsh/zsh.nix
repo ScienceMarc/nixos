@@ -4,10 +4,10 @@
         # zsh
         zsh-completions
         zsh-powerlevel10k
-        zsh-fast-syntax-highlighting
         zsh-history-substring-search
-        zsh-autocomplete
         zsh-autosuggestions
+        zsh-fast-syntax-highlighting
+        zsh-autocomplete
     ];
 
     # users.users.marc.marc.shell = pkgs.zsh;

@@ -32,7 +32,8 @@
       fastfetch
       lshw
       ffmpeg
-
+      rclone
+      discordchatexporter-cli
 
       # ----- dev -------
       go
@@ -58,14 +59,22 @@
       gnomecast
       stellarium
       handbrake
+      electrum
+      qdirstat
+	    plasma-browser-integration
+      veikk-linux-driver-gui
+
 
       # games
       steam
+      mangohud
+      protonup
 
-	    plasma-browser-integration
       	
 	
     ];
+
+
     sessionVariables = {
       XDG_CACHE_HOME  = "$HOME/.cache";
       XDG_CONFIG_HOME = "$HOME/.config";
@@ -82,7 +91,8 @@
   };
   
   programs.home-manager.enable = true;
-
+  
+  
 
   xdg = {
     mime.enable = true;
@@ -140,5 +150,6 @@
     userName = "Marc Lavergne";
     userEmail = "marc.lavergne@hotmail.com";
   };
+  #services.mozillavpn.enable = true;
 }
 
