@@ -20,6 +20,7 @@
             "vim" = "nvim";
             "switch" = "sudo nixos-rebuild switch";
             "ff" = "fastfetch";
+            "inst" = "nix-shell -p";
         };
         oh-my-zsh = {
             enable = true;
