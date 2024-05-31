@@ -12,10 +12,12 @@
     # ../special/veikk/veikk.nix
   ];
 
-    nix = {
+  nix = {
     package = pkgs.nixFlakes;
     settings.experimental-features = [ "nix-command" "flakes" ];
   };
+
+  nixpkgs.config.allowUnfree = true;
 
 
   # Bootloader.
@@ -88,7 +90,12 @@
     firefox
     kate
   ];
-  users.users.marc.shell = pkgs.zsh;
+  users.users.marc = {
+    isNormalUser = true;
+    description = "marc";
+    extraGroups = [ "networkmanager" "wheel" ];
+    shell = pkgs.zsh;
+  };
   programs.zsh.enable = true;
 
   programs.gamemode.enable = true;
@@ -97,4 +104,6 @@
   #   automatic = true;
   #   dates = "monthly";
   # };
+
+  system.stateVersion = "23.11";
 }

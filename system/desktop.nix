@@ -63,9 +63,6 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.marc = {
-    isNormalUser = true;
-    description = "marc";
-    extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       ckb-next
     #  thunderbird
@@ -73,9 +70,6 @@
   };
 
   hardware.ckb-next.enable = true;
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -112,6 +106,6 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.11"; # Did you read the comment?
+  # system.stateVersion = "23.11"; # Did you read the comment?
 
 }

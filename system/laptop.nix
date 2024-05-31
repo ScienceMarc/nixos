@@ -51,8 +51,8 @@
         package = config.boot.kernelPackages.nvidiaPackages.stable;
     };
 
-  hardware.nvidia.prime = {
-    sync.enable = true;
+    hardware.nvidia.prime = {
+        sync.enable = true;
 
 		# Make sure to use the correct Bus ID values for your system!
 		intelBusId = "PCI:0:2:0";
@@ -64,16 +64,12 @@
         system.nixos.tags = [ "no-gpu" ];
 
         hardware.nvidia.prime = {
-            sync.enable = pkgs.lib.mkForce false;
 
+            sync.enable = pkgs.lib.mkForce false;
             offload = {
                 enable = true;
                 enableOffloadCmd = true;
             };
-
-            # Make sure to use the correct Bus ID values for your system!
-            intelBusId = "PCI:0:2:0";
-            nvidiaBusId = "PCI:1:0:0";
         };
 
         boot.extraModprobeConfig = ''

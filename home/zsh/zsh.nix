@@ -19,6 +19,7 @@
             "hm" = "home-manager";
             "vim" = "nvim";
             "switch" = "sudo nixos-rebuild switch";
+            "ff" = "fastfetch";
         };
         oh-my-zsh = {
             enable = true;
