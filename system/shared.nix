@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   # imports = [
@@ -32,9 +32,6 @@
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
 
-  # Set your time zone.
-  time.timeZone = "America/Chicago";
-
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
@@ -53,16 +50,25 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-
-  # Enable the KDE Plasma Desktop Environment.
-  services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
-
   # Configure keymap in X11
   services.xserver = {
-    layout = "us";
-    xkbVariant = "";
+    xkb.layout = "us";
+    xkb.variant = "";
   };
+
+  # Enable the KDE Plasma Desktop Environment.
+  services.displayManager.sddm.enable = true;
+  services.xserver.desktopManager.plasma5.enable = true;
+
+  # Enable hyprland
+  programs.hyprland.enable = true;
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  };
+
+  # Enable man page caches
+  documentation.man.generateCaches = true;
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -89,6 +95,7 @@
     neovim
     firefox
     kate
+    mullvad-vpn
   ];
   users.users.marc = {
     isNormalUser = true;
@@ -99,11 +106,12 @@
   programs.zsh.enable = true;
 
   programs.gamemode.enable = true;
+  services.mullvad-vpn.enable = true;
 
   # nix.gc = {
   #   automatic = true;
   #   dates = "monthly";
   # };
 
-  system.stateVersion = "23.11";
+  system.stateVersion = "24.05";
 }

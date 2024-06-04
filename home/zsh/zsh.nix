@@ -21,6 +21,7 @@
             "switch" = "sudo nixos-rebuild switch";
             "ff" = "fastfetch";
             "inst" = "nix-shell -p";
+            "fd" = "cd $(dirname $(fzf))";
         };
         oh-my-zsh = {
             enable = true;

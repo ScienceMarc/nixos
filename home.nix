@@ -1,6 +1,7 @@
 { lib, pkgs, pkgs-unstable, ... }: rec {
   imports = [
     ./home/zsh/zsh.nix
+    ./home/hyprland/hyprland.nix
   ];
   home = {
     username = "marc";
@@ -34,6 +35,8 @@
       ffmpeg
       rclone
       discordchatexporter-cli
+      cmatrix
+      powertop
 
       # ----- dev -------
       go
@@ -63,6 +66,7 @@
       qdirstat
 	    plasma-browser-integration
       veikk-linux-driver-gui
+      
 
 
       # games

@@ -5,6 +5,10 @@
 
     networking.hostName = "marc-laptop"; # Define your hostname.
 
+    # TODO: Figure out why auto timezones don't work
+    #services.automatic-timezoned.enable = true;
+    time.timeZone = "Europe/London";
+
     services.thermald.enable = true;
     powerManagement.enable = true;
 
