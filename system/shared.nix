@@ -58,7 +58,7 @@
 
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
+  services.desktopManager.plasma6.enable = true;
 
   # Enable hyprland
   programs.hyprland.enable = true;
@@ -91,11 +91,14 @@
   };
 
   environment.systemPackages = with pkgs; [
-    zsh
+    #zsh
     neovim
     firefox
     kate
     mullvad-vpn
+    qemu
+    virt-manager
+    libvirt-glib
   ];
   users.users.marc = {
     isNormalUser = true;
@@ -107,6 +110,11 @@
 
   programs.gamemode.enable = true;
   services.mullvad-vpn.enable = true;
+
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
+
+  security.polkit.enable = true;
 
   # nix.gc = {
   #   automatic = true;

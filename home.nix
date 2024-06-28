@@ -37,6 +37,8 @@
       discordchatexporter-cli
       cmatrix
       powertop
+      mc
+      file
 
       # ----- dev -------
       go
@@ -49,12 +51,24 @@
       signal-desktop
       thunderbird
       qpwgraph
+      telegram-desktop
+      zoom-us
+      vesktop
 
       # productivity
       logseq
       obsidian
       onlyoffice-bin
       xournalpp
+
+      # visual editing
+      krita
+      gimp
+
+      # games
+      steam
+      mangohud
+      protonup
       
       # other
       qbittorrent
@@ -64,15 +78,10 @@
       handbrake
       electrum
       qdirstat
-	    plasma-browser-integration
+	    #plasma-browser-integration
       veikk-linux-driver-gui
-      
-
-
-      # games
-      steam
-      mangohud
-      protonup
+      linux-wifi-hotspot
+      tor-browser
 
       	
 	
@@ -95,8 +104,6 @@
   };
   
   programs.home-manager.enable = true;
-  
-  
 
   xdg = {
     mime.enable = true;

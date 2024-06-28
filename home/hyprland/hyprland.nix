@@ -4,6 +4,7 @@
     imports = [
         ./waybar.nix
         ./hyprlock.nix
+        ./hypridle.nix
     ];
 
     home.packages = with pkgs; [
@@ -11,18 +12,26 @@
         dunst # Notif daemon
         libnotify # Needed by dunst
         kitty # Terminal
-        #wofi # App launcher
         anyrun # App launcher
 
         hyprpaper # Wallpaper
         hyprshot # Screenshot
+        hyprpicker # Color picker
         hyprlock # Lock screen
+        hypridle # Idle daemon
+        nwg-look # Cursor
 
         networkmanagerapplet # Wifi
         blueman # Bluetooth
         brightnessctl # Brightness keys
-        
+        lxqt.lxqt-policykit # polkit
+        playerctl # Deal with media keys
     ];
+
+    # home.sessionVariables = {
+    #     "NIXOS_OZONE_WL" = "1";
+    #     "ELECTRON_OZONE_PLATFORM_HINT" = "auto";
+    # };
 
     wayland.windowManager.hyprland = {
         enable = true;
@@ -43,10 +52,15 @@
 
             # Start up extra components
             exec-once = [
-                "waybar & dunst & libnotify & hyperpaper & nm-applet & blueman-applet"
+                #"waybar & dunst & libnotify & hyperpaper & nm-applet & blueman-applet"
+                "dunst & libnotify & hyperpaper & nm-applet & blueman-applet"
+                "lxqt-policykit-agent"
                 "[workspace 1 silent] firefox"
-                "[workspace 2 silent] code"
-                "[workspace 3 silent] discord"
+                "[workspace 2 silent] discord"
+                "[workspace 2 silent] telegram-desktop"
+                "[workspace 3 silent] code"
+                "[workspace 4 silent] kitty btop"
+                "[workspace 4 silent] thunderbird"
             ];
 
             # Definitions
@@ -96,6 +110,11 @@
                 ];
             };
 
+            dwindle = {
+                smart_split = true;
+                # no_gaps_when_only = 1;
+            };
+
             bind = [
                 #"$mainMod, W, exec, nm-applet"
                 #"$mainMod, B, exec, blueman-applet"
@@ -120,24 +139,20 @@
                 ", Print, exec, hyprshot -m region --clipboard-only"
                 "SHIFT, Print, exec, hyprshot -m output --clipboard-only"
 
-                # Brightness
-                ",code:233, exec, brightnessctl set 5%+"
-                ",code:232, exec, brightnessctl set 5%-"
-
-                # Volume
-                ",code:123, exec, wpctl set-volume -l 1.0 @DEFAULT_SINK@ 5%+"
-                ",code:122, exec, wpctl set-volume -l 1.0 @DEFAULT_SINK@ 5%-"
-                ",code:121, exec, wpctl set-volume -l 1.0 @DEFAULT_SINK@ 0%"
-
                 # Move focus with mainMod + arrow keys
                 "$mainMod, left, movefocus, l"
                 "$mainMod, right, movefocus, r"
                 "$mainMod, up, movefocus, u"
                 "$mainMod, down, movefocus, d"
 
+                # Shift the tiles around
+                "$mainMod ALT, right, movewindow, r"
+                "$mainMod ALT, left, movewindow, l"
+                "$mainMod ALT, up, movewindow, u"
+                "$mainMod ALT, down, movewindow, d"
+
                 "$mainMod, F, fullscreen, 1"
                 "ALT, Tab, cyclenext,"
-                #"ALT SHIFT, Tab, cycleprevious,"
                 "$mainMod, Tab, workspace, e+1"
                 "$mainMod SHIFT, Tab, workspace, e-1"
 
@@ -174,10 +189,29 @@
 
             bindl = [
                 ",switch:on:Lid Switch,exec,hyprlock"
+
+                # Media keys
+                ",XF86AudioPrev, exec, playerctl previous"
+                ",XF86AudioNext, exec, playerctl next"
+                ",XF86AudioPlay, exec, playerctl play-pause"
+            ];
+            
+            binde = [
+                # Brightness
+                ",code:233, exec, brightnessctl set 5%+"
+                ",code:232, exec, brightnessctl set 5%-"
+
+                # Volume
+                ",code:123, exec, wpctl set-volume -l 1.0 @DEFAULT_SINK@ 5%+"
+                ",code:122, exec, wpctl set-volume -l 1.0 @DEFAULT_SINK@ 5%-"
+                ",code:121, exec, wpctl set-volume -l 1.0 @DEFAULT_SINK@ 0%"
+
+                # Resize tiles
+                "$mainMod SHIFT, right, resizeactive, 15 0"
+                "$mainMod SHIFT, left, resizeactive, -15 0"
+                "$mainMod SHIFT, up, resizeactive, 0 -15"
+                "$mainMod SHIFT, down, resizeactive, 0 15"
             ];
         };
     };
-
-    
-    #home.file."hyprlock.conf".source = config.lib.file.mkOutOfStoreSymlink ../hypr/hyprlock.conf;
 }

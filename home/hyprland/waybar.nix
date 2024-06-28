@@ -22,32 +22,34 @@
             };
 
             modules-right = [
+                "backlight"
                 "cpu"
                 "memory"
                 "pulseaudio"
                 "network"
                 # "temperature" doesn't work for some reason
-                "backlight"
                 "battery"
                 "clock"
                 "tray"
             ];
 
             battery = {
-                format = "{time} {icon}";
-                format-alt = "{capacity}% {icon}";
-                format-charging = "{capacity}% ";
+                format = "{capacity}% - {power}W - {time} {icon}";
+                #tooltip-format = "{power}W";
+                #format-alt = "{capacity}% {icon}";
+                format-charging = "{capacity}% {time} ";
                 format-icons = [ "" "" "" "" "" ];
                 format-plugged = "{capacity}% ";
                 states = {
                     critical = 15;
                     warning = 30;
                 };
+                interval = 2;
             };
             clock = {
                 format = "{:%Y-%m-%d - %I:%M %p}";
-                format-alt = "{:%Y-%m-%d}";
-                tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+                #format-alt = "{:%Y-%m-%d}";
+                tooltip-format = "<big>{:%A}</big>\n<tt><small>{calendar}</small></tt>";
             };
             cpu = {
                 format = "{usage}% ";

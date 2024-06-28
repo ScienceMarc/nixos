@@ -5,9 +5,15 @@
 
     networking.hostName = "marc-laptop"; # Define your hostname.
 
-    # TODO: Figure out why auto timezones don't work
-    #services.automatic-timezoned.enable = true;
-    time.timeZone = "Europe/London";
+
+    #! Make sure this works once returned to normal locale
+    services.automatic-timezoned.enable = true;
+
+    swapDevices = [{
+        device = "/swapfile";
+        size = 16 * 1024; # Size of swap in MB
+    }];
+
 
     services.thermald.enable = true;
     powerManagement.enable = true;
@@ -38,6 +44,7 @@
 
         boot.extraModprobeConfig = pkgs.lib.mkForce "";
         boot.blacklistedKernelModules = pkgs.lib.mkForce [];
+        services.udev.extraRules = pkgs.lib.mkForce "";
 
         # Nvidia settings
         # Enable OpenGL
