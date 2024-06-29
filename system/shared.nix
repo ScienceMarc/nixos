@@ -116,6 +116,8 @@
 
   security.polkit.enable = true;
 
+  services.avahi.enable = true;
+
   # nix.gc = {
   #   automatic = true;
   #   dates = "monthly";

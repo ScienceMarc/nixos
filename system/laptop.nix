@@ -5,9 +5,8 @@
 
     networking.hostName = "marc-laptop"; # Define your hostname.
 
-
-    #! Make sure this works once returned to normal locale
-    services.automatic-timezoned.enable = true;
+    # Timezone must be set imperatively because auto timzeone stuff didn't work
+    time.timeZone = null;
 
     swapDevices = [{
         device = "/swapfile";
