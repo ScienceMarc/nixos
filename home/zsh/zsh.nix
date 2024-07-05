@@ -27,6 +27,7 @@
             "inst" = "nix-shell -p";
             "fd" = "cd $(dirname $(fzf))";
             "cd" = "z";
+            "temp" = "cd $(mktemp -d)";
         };
         oh-my-zsh = {
             enable = true;

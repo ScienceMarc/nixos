@@ -111,12 +111,17 @@
   programs.gamemode.enable = true;
   services.mullvad-vpn.enable = true;
 
+  # Virtual machines
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
 
   security.polkit.enable = true;
 
+  # Printers
   services.avahi.enable = true;
+
+  # USB automounting
+  services.gvfs.enable = true;
 
   # nix.gc = {
   #   automatic = true;

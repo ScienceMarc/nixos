@@ -9,10 +9,11 @@
 
     home.packages = with pkgs; [
         waybar # Bar
-        dunst # Notif daemon
-        libnotify # Needed by dunst
+        swaynotificationcenter # Notif daemon
+        libnotify # Needed by swaync
         kitty # Terminal
         anyrun # App launcher
+        cinnamon.nemo # 
 
         hyprpaper # Wallpaper
         hyprshot # Screenshot
@@ -20,6 +21,7 @@
         hyprlock # Lock screen
         hypridle # Idle daemon
         nwg-look # Cursor
+        # nwg-displays # Display config
 
         networkmanagerapplet # Wifi
         blueman # Bluetooth
@@ -44,23 +46,26 @@
                 new_window_takes_over_fullscreen = 2;
             };
 
-            #env = "XCURSOR_SIZE,50";
-
             ### MONITOR CONFIG ###
-            # TODO: Make this work with desktop too (dynamic nix?)
-            monitor = ",preferred,1920x1080@144,1";
+            # monitor = ",preferred,1920x1080@144,1";
+            monitor = [
+                "HDMI-A-1,2560x1080@60,0x0,1"
+                "DP-2,3440x1440@144,2560x-200,1"
+                "DP-3,1280x1024@60,6000x50,1"
+                "Unknown-1,disable"
+            ];
 
             # Start up extra components
             exec-once = [
                 #"waybar & dunst & libnotify & hyperpaper & nm-applet & blueman-applet"
-                "dunst & libnotify & hyperpaper & nm-applet & blueman-applet"
+                "swaync & libnotify & hyperpaper & nm-applet & blueman-applet"
                 "lxqt-policykit-agent"
-                "[workspace 1 silent] firefox"
-                "[workspace 2 silent] discord"
-                "[workspace 2 silent] telegram-desktop"
-                "[workspace 3 silent] code"
-                "[workspace 4 silent] kitty btop"
-                "[workspace 4 silent] thunderbird"
+                # "[workspace 1 silent] firefox"
+                # "[workspace 2 silent] discord"
+                # "[workspace 2 silent] telegram-desktop"
+                # "[workspace 3 silent] code"
+                # "[workspace 4 silent] kitty btop"
+                # "[workspace 4 silent] thunderbird"
             ];
 
             # Definitions
@@ -75,6 +80,7 @@
                 };
 
                 sensitivity = "0";
+                numlock_by_default = true;
             };
 
             xwayland = {
@@ -121,14 +127,15 @@
 
                 "$mainMod, C, exec, kitty"
                 "$mainMod, Q, killactive, "
-                "$mainMod, M, exit, "
-                "$mainMod, E, exec, dolphin"
+                # "$mainMod, M, exit, "
+                "$mainMod, E, exec, nemo"
                 "$mainMod, V, togglefloating, "
                 "ALT, Space, exec, anyrun"
                 "$mainMod, P, pseudo, # dwindle"
                 "$mainMod, J, togglesplit, # dwindle"
 
                 "$mainMod, L, exec, hyprlock"
+                "$mainMod, N, exec, swaync-client -t"
 
                 "$mainMod SHIFT, F, exec, firefox"
                 "$mainMod SHIFT, P, exec, firefox --private-window"
@@ -179,6 +186,10 @@
                 "$mainMod SHIFT, 8, movetoworkspace, 8"
                 "$mainMod SHIFT, 9, movetoworkspace, 9"
                 "$mainMod SHIFT, 0, movetoworkspace, 10"
+
+                # Special workspace
+                "$mainMod SHIFT, Z, movetoworkspace, special"
+                "$mainMod, Z, togglespecialworkspace,"
             ];
 
             bindm = [
