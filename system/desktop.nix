@@ -18,10 +18,10 @@
   # Nvidia settings
 
   # Enable OpenGL
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
+    #driSupport = true;
+    enable32Bit = true;
   };
 
   # Load nvidia driver for Xorg and Wayland
@@ -86,6 +86,8 @@
     SUBSYSTEM=="usb",  ATTRS{idVendor}=="0416", ATTRS{idProduct}=="5020", MODE="0666"
     KERNEL=="hidraw*", ATTRS{idVendor}=="0416", ATTRS{idProduct}=="5020", MODE="0666"
   '';
+
+  systemd.services.NetworkManager-wait-online.enable = false;
 
   # swapDevices = [ {
   #   device = "/var/lib/swapfile";
