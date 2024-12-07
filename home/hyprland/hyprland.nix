@@ -139,6 +139,7 @@
 
                 "$mainMod SHIFT, F, exec, firefox"
                 "$mainMod SHIFT, P, exec, firefox --private-window"
+                "$mainMod SHIFT, N, exec, firefox -P Second_user"
                 "$mainMod SHIFT, C, exec, code"
                 
 

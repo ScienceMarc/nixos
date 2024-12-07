@@ -66,6 +66,7 @@
       settingsSha256 = "sha256-vWnrXlBCb3K5uVkDFmJDVq51wrCoqgPF03lSjZOuU8M=";
       persistencedSha256 = lib.fakeSha256;
     };
+    #package = config.boot.kernelPackages.nvidiaPackages.production;
   };
 
 
@@ -76,9 +77,23 @@
   users.users.marc = {
     packages = with pkgs; [
       ckb-next
+      gparted
     #  thunderbird
     ];
   };
+
+  services.udev.extraRules = ''
+    SUBSYSTEM=="usb",  ATTRS{idVendor}=="0416", ATTRS{idProduct}=="5020", MODE="0666"
+    KERNEL=="hidraw*", ATTRS{idVendor}=="0416", ATTRS{idProduct}=="5020", MODE="0666"
+  '';
+
+  # swapDevices = [ {
+  #   device = "/var/lib/swapfile";
+  #   size = 64*1024; # Size in MiB
+  # } ];
+
+  zramSwap.enable = true;
+
 
   hardware.ckb-next.enable = true;
 

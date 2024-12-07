@@ -28,6 +28,7 @@
             "fd" = "cd $(dirname $(fzf))";
             "cd" = "z";
             "temp" = "cd $(mktemp -d)";
+            "ztar" = "tar --zstd -cvf";
         };
         oh-my-zsh = {
             enable = true;

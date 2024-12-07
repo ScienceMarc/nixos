@@ -69,6 +69,7 @@
       steam
       mangohud
       protonup
+      prismlauncher
       
       # other
       qbittorrent
@@ -82,6 +83,14 @@
       veikk-linux-driver-gui
       linux-wifi-hotspot
       tor-browser
+      wf-recorder
+
+      # Gephi
+      gephi
+
+      # Compatability
+      wine
+      winetricks
 
       	
 	
