@@ -9,9 +9,9 @@
 
     home.packages = with pkgs; [
         waybar # Bar
-        dunst # Notif daemon
+        swaynotificationcenter # Notif daemon
         libnotify # Needed by dunst
-        kitty # Terminal
+        foot # Terminal
         anyrun # App launcher
 
         hyprpaper # Wallpaper
@@ -33,6 +33,15 @@
     #     "ELECTRON_OZONE_PLATFORM_HINT" = "auto";
     # };
 
+    programs.foot = {
+        enable = true;
+        settings = {
+            main = {
+                font = "monospace:size=11";
+            };
+        };
+    };
+
     wayland.windowManager.hyprland = {
         enable = true;
         settings = {
@@ -48,19 +57,19 @@
 
             ### MONITOR CONFIG ###
             # TODO: Make this work with desktop too (dynamic nix?)
-            monitor = ",preferred,1920x1080@144,1";
+            monitor = "eDP-1,1920x1080@60.02,0x0,1";
 
             # Start up extra components
             exec-once = [
                 #"waybar & dunst & libnotify & hyperpaper & nm-applet & blueman-applet"
-                "dunst & libnotify & hyperpaper & nm-applet & blueman-applet"
+                "swaync & libnotify & hyperpaper & nm-applet & blueman-applet"
                 "lxqt-policykit-agent"
-                "[workspace 1 silent] firefox"
-                "[workspace 2 silent] discord"
-                "[workspace 2 silent] telegram-desktop"
-                "[workspace 3 silent] code"
-                "[workspace 4 silent] kitty btop"
-                "[workspace 4 silent] thunderbird"
+                # "[workspace 1 silent] firefox"
+                # "[workspace 2 silent] discord"
+                # "[workspace 2 silent] telegram-desktop"
+                # "[workspace 3 silent] code"
+                # "[workspace 4 silent] kitty btop"
+                # "[workspace 4 silent] thunderbird"
             ];
 
             # Definitions
@@ -119,7 +128,7 @@
                 #"$mainMod, W, exec, nm-applet"
                 #"$mainMod, B, exec, blueman-applet"
 
-                "$mainMod, C, exec, kitty"
+                "$mainMod, C, exec, foot"
                 "$mainMod, Q, killactive, "
                 "$mainMod, M, exit, "
                 "$mainMod, E, exec, dolphin"
@@ -133,7 +142,7 @@
                 "$mainMod SHIFT, F, exec, firefox"
                 "$mainMod SHIFT, P, exec, firefox --private-window"
                 "$mainMod SHIFT, C, exec, code"
-                
+                "$mainMod ALT, D, exec, hyprctl dispatch dpms on"
 
                 # Screenshotting
                 ", Print, exec, hyprshot -m region --clipboard-only"

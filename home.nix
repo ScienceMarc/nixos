@@ -42,7 +42,9 @@
 
       # ----- dev -------
       go
+      gdb
       gcc
+      jdk
 
       # ----- applications -----
     
@@ -56,7 +58,7 @@
       vesktop
 
       # productivity
-      logseq
+      # logseq
       obsidian
       onlyoffice-bin
       xournalpp
@@ -69,6 +71,7 @@
       steam
       mangohud
       protonup
+      prismlauncher
       
       # other
       qbittorrent
@@ -82,7 +85,7 @@
       veikk-linux-driver-gui
       linux-wifi-hotspot
       tor-browser
-
+      audacity
       	
 	
     ];

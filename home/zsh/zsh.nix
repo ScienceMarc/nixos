@@ -1,6 +1,6 @@
 { lib, pkgs, ... }: {
     home.packages = with pkgs; [
-        oh-my-zsh
+        #oh-my-zsh
         zsh
         # zsh-completions
         # zsh-powerlevel10k
@@ -15,9 +15,9 @@
     programs.zsh = {
         enable = true;
         enableCompletion = true;
-        initExtra = ''
-        bindkey -M menuselect '\r' .accept-line
-        '';
+        # initExtra = ''
+        # bindkey -M menuselect '\r' .accept-line
+        # '';
         #autosuggestions.enable = true;
         shellAliases = {
             "hm" = "home-manager";
@@ -28,10 +28,15 @@
             "fd" = "cd $(dirname $(fzf))";
             "cd" = "z";
         };
-        oh-my-zsh = {
-            enable = true;
-            theme = "robbyrussell";
-            # plugins = [ "git" "zsh-autosuggestions" "zsh-fast-syntax-highlighting" "zsh-autocomplete" ];
+        # oh-my-zsh = {
+        #     enable = true;
+        #     theme = "robbyrussell";
+        #     # plugins = [ "git" "zsh-autosuggestions" "zsh-fast-syntax-highlighting" "zsh-autocomplete" ];
+        # };
+        prezto = {
+            enable = false;
+            #theme = "sorin";
+            # modules = [ "git" "syntax-highlighting" "autosuggestions" ];
         };
         plugins = [
             {
@@ -39,16 +44,16 @@
                 src = pkgs.zsh-autosuggestions;
                 file = "share/zsh-autosuggestions/zsh-autosuggestions.zsh";
             }
-            {
-                name = "zsh-fast-syntax-highlighting";
-                src = pkgs.zsh-fast-syntax-highlighting;
-                file = "share/zsh/site-functions";
-            }
-            {
-                name = "zsh-autocomplete";
-                src = pkgs.zsh-autocomplete;
-                file = "share/zsh-autocomplete/zsh-autocomplete.plugin.zsh";
-            }
+            # {
+            #     name = "zsh-fast-syntax-highlighting";
+            #     src = pkgs.zsh-fast-syntax-highlighting;
+            #     file = "share/zsh/site-functions";
+            # }
+            # {
+            #     name = "zsh-autocomplete";
+            #     src = pkgs.zsh-autocomplete;
+            #     file = "share/zsh-autocomplete/zsh-autocomplete.plugin.zsh";
+            # }
         ];
     };
 

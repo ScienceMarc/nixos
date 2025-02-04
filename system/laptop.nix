@@ -5,6 +5,8 @@
 
     networking.hostName = "marc-laptop"; # Define your hostname.
 
+    #boot.kernelPackages = pkgs.linuxPackages_latest;
+
     # Timezone must be set imperatively because auto timzeone stuff didn't work
     time.timeZone = null;
 
@@ -16,6 +18,34 @@
 
     services.thermald.enable = true;
     powerManagement.enable = true;
+    services.power-profiles-daemon.enable = false;
+
+    services.tlp = {
+        enable = true;
+        settings = {
+            CPU_SCALING_GOVERNOR_ON_AC = "performance";
+            CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+
+            CPU_BOOST_ON_BAT = 0;
+            CPU_MAX_PER_ON_BAT=60;
+        };
+    };
+
+    # services.auto-cpufreq.enable = true;
+    # services.auto-cpufreq.settings = {
+    #     battery = {
+    #         governor = "powersave";
+    #         turbo = "never";
+    #     };
+    #     charger = {
+    #         governor = "performance";
+    #         turbo = "auto";
+    #     };
+    # };
+
+    boot.kernelParams = [ "button.lid_init_state=open" ];
+
+
 
     services.udev.extraRules = ''
         # Remove NVIDIA USB xHCI Host Controller devices, if present
@@ -37,6 +67,13 @@
         [ "nouveau" "nvidia" "nvidia_drm" "nvidia_modeset" ];
     };
 
+    environment.systemPackages = with pkgs; [
+        docker
+        nvidia-container-toolkit
+    ];
+
+    virtualisation.docker.enableNvidia = true;
+
     specialisation = {
         gpu.configuration = {
         system.nixos.tags = [ "gpu" ];
@@ -49,7 +86,7 @@
         # Enable OpenGL
         hardware.opengl = {
             enable = true;
-            driSupport = true;
+            #driSupport = true;
             driSupport32Bit = true;
         };
 
