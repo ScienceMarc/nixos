@@ -11,9 +11,9 @@
         waybar # Bar
         swaynotificationcenter # Notif daemon
         libnotify # Needed by swaync
-        kitty # Terminal
+        foot # Terminal
         anyrun # App launcher
-        cinnamon.nemo # 
+        #cinnamon.nemo # 
 
         hyprpaper # Wallpaper
         hyprshot # Screenshot
@@ -125,10 +125,10 @@
                 #"$mainMod, W, exec, nm-applet"
                 #"$mainMod, B, exec, blueman-applet"
 
-                "$mainMod, C, exec, kitty"
+                "$mainMod, C, exec, foot"
                 "$mainMod, Q, killactive, "
                 # "$mainMod, M, exit, "
-                "$mainMod, E, exec, nemo"
+                "$mainMod, E, exec, dolphin"
                 "$mainMod, V, togglefloating, "
                 "ALT, Space, exec, anyrun"
                 "$mainMod, P, pseudo, # dwindle"

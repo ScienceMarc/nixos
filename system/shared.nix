@@ -107,6 +107,7 @@
     shell = pkgs.zsh;
   };
   programs.zsh.enable = true;
+  programs.zsh.enableCompletion = false;
 
   programs.gamemode.enable = true;
   services.mullvad-vpn.enable = true;

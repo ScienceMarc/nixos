@@ -67,6 +67,7 @@
 
       # games
       steam
+      gamescope
       mangohud
       protonup
       prismlauncher
