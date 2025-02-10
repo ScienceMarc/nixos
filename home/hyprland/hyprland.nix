@@ -35,6 +35,15 @@
     #     "ELECTRON_OZONE_PLATFORM_HINT" = "auto";
     # };
 
+    programs.foot = {
+        enable = true;
+        settings = {
+            main = {
+                font = "monospace:size=11";
+            };
+        };
+    };
+
     wayland.windowManager.hyprland = {
         enable = true;
         settings = {
@@ -49,10 +58,7 @@
             ### MONITOR CONFIG ###
             # monitor = ",preferred,1920x1080@144,1";
             monitor = [
-                "HDMI-A-1,2560x1080@60,0x0,1"
-                "DP-2,3440x1440@144,2560x-200,1"
-                "DP-3,1280x1024@60,6000x50,1"
-                "Unknown-1,disable"
+                "eDP-1, preferred, auto, 1.33"
             ];
 
             # Start up extra components

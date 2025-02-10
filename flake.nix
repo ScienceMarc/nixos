@@ -5,6 +5,7 @@
     home-manager.url = "github:nix-community/home-manager/release-24.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     hyperland.url = "github:hyprwm/Hyprland";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
   outputs = inputs: with inputs; {
     defaultPackage = home-manager.defaultPackage;
@@ -29,9 +30,9 @@
       };
     };
     nixosConfigurations = {
-      "marc-laptop" = nixpkgs.lib.nixosSystem {
+      "marc-fw13" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-	      modules = [ ./system/laptop.nix ];
+	      modules = [ ./system/laptop.nix nixos-hardware.nixosModules.framework-13-7040-amd ];
       };
       "marc-desktop" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";

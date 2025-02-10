@@ -109,7 +109,7 @@
       #TERMINAL = "alacritty";
       #TERM = "alacritty";
 
-      #NIXOS_OZONE_WL = "1";
+      NIXOS_OZONE_WL = "1";
     };
   };
   
@@ -141,8 +141,6 @@
   #     uris = ["qemu:///system"];
   #   };
   # };
-
-
 
   fonts.fontconfig.enable = true;
 

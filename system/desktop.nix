@@ -15,6 +15,12 @@
   # Set your time zone.
   time.timeZone = "America/Chicago";
 
+  # Configure keymap in X11
+  services.xserver = {
+    xkb.layout = "us";
+    xkb.variant = "";
+  };
+
   # Nvidia settings
 
   # Enable OpenGL
