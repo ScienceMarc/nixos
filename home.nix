@@ -20,7 +20,7 @@
       tree
       gnumake
       wget
-      btop
+      btop-rocm
       zip
       loc
       jq
@@ -52,7 +52,7 @@
       thunderbird
       qpwgraph
       telegram-desktop
-      zoom-us
+      #zoom-us
       vesktop
 
       # productivity
@@ -93,7 +93,15 @@
       wine
       winetricks
 
-      	
+      # kde apps
+      dolphin
+      okular
+      kate
+      gwenview
+      ark
+          	
+      # debug
+      glxinfo
 	
     ];
 

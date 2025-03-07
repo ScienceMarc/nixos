@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, nixpkgs-master, ... }:
 
 {
   imports =
@@ -15,6 +15,9 @@
   # Set your time zone.
   time.timeZone = "America/Chicago";
 
+  #boot.kernelPackages = pkgs.linuxPackages_testing;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   # Nvidia settings
 
   # Enable OpenGL
@@ -24,10 +27,30 @@
     enable32Bit = true;
   };
 
+  boot.initrd.kernelModules = [ "amdgpu" ];
+  services.xserver.enable = true;
+  services.xserver.videoDrivers = [ "amdgpu" ];
+
+  #chaotic.mesa-git.enable = true;
+
+  # nixpkgs.overlays = [
+  #   (import ./mesa_overlay.nix { unstablePkgs = nixpkgs-unstable.legacyPackages.${pkgs.system}; super = pkgs; })
+  # ];
+
+  # nixpkgs.overlays = [
+  #   (final: prev: {
+  #     mesa = nixpkgs-master.legacyPackages.${pkgs.system}.mesa;
+  #     lib32-mesa = nixpkgs-master.legacyPackages.${pkgs.system}.lib32-mesa;
+  #   })
+  # ];
+
+
+  
+
   # Load nvidia driver for Xorg and Wayland
-  services.xserver.videoDrivers = ["nvidia"];
+  #services.xserver.videoDrivers = ["nvidia"];
 
-
+  /*
   hardware.nvidia = {
 
     # Modesetting is required.
@@ -69,7 +92,7 @@
     #package = config.boot.kernelPackages.nvidiaPackages.production;
     #hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta
   };
-
+  */
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;

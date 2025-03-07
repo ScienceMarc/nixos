@@ -49,9 +49,9 @@
             ### MONITOR CONFIG ###
             # monitor = ",preferred,1920x1080@144,1";
             monitor = [
-                "HDMI-A-1,2560x1080@60,0x0,1"
+                "HDMI-A-2,2560x1080@60,0x0,1"
                 "DP-2,3440x1440@144,2560x-200,1"
-                "DP-3,1280x1024@60,6000x50,1"
+                "DP-1,1280x1024@60,6000x50,1"
                 "Unknown-1,disable"
             ];
 
