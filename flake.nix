@@ -8,9 +8,9 @@
 
     home-manager.url = "github:nix-community/home-manager/release-24.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs-unstable";
-    hyperland.url = "github:hyprwm/Hyprland";
+    hyprland.url = "github:hyprwm/Hyprland";
   };
-  outputs = { self, nixpkgs, nixpkgs-unstable, nixpkgs-master, chaotic, home-manager, hyperland }: {
+  outputs = { self, nixpkgs, nixpkgs-unstable, nixpkgs-master, chaotic, home-manager, hyprland }: {
     defaultPackage = home-manager.defaultPackage;
     homeConfigurations = {
       marc = home-manager.lib.homeManagerConfiguration {
@@ -37,12 +37,15 @@
         system = "x86_64-linux";
 	      modules = [ ./system/laptop.nix ];
       };
-      "marc-desktop" = nixpkgs.lib.nixosSystem {
+      "marc-desktop" = nixpkgs-unstable.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [ 
           ./system/desktop.nix 
-          #chaotic.nixosModules.default
+          hyprland.nixosModules.default
+          chaotic.nixosModules.default
         ];
+
+        
         
 
       };

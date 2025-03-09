@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, nixpkgs-master, ... }:
+{ config, pkgs, lib, nixpkgs-unstable, ... }:
 
 {
   imports =
@@ -31,7 +31,19 @@
   services.xserver.enable = true;
   services.xserver.videoDrivers = [ "amdgpu" ];
 
-  #chaotic.mesa-git.enable = true;
+  chaotic.mesa-git.enable = true;
+
+  # Get git version of linux-firmware
+  hardware.firmware = with pkgs; [
+    (linux-firmware.overrideAttrs (old: {
+      src = builtins.fetchGit {
+        url = "https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git";
+        #rev = "de78f0aaafb96b3a47c92e9a47485a9509c51093";
+      };
+    }))
+  ];
+
+
 
   # nixpkgs.overlays = [
   #   (import ./mesa_overlay.nix { unstablePkgs = nixpkgs-unstable.legacyPackages.${pkgs.system}; super = pkgs; })
@@ -102,7 +114,10 @@
     packages = with pkgs; [
       ckb-next
       gparted
+      amdgpu_top
     #  thunderbird
+
+    
     ];
   };
 
@@ -128,7 +143,7 @@
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
-    
+    #nixpkgs-unstable.mesa
   ];
 
   services.tailscale.enable = true;

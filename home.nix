@@ -64,6 +64,7 @@
       # visual editing
       krita
       gimp
+      blender
 
       # games
       steam
