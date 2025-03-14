@@ -93,6 +93,7 @@
       # Compatability
       wine
       winetricks
+      bottles
 
       # kde apps
       dolphin
@@ -173,12 +174,6 @@
     extensions = with pkgs.vscode-extensions; [
       
     ];
-  };
-
-  programs.git = {
-    enable = true;
-    userName = "Marc Lavergne";
-    userEmail = "marc.lavergne@hotmail.com";
   };
   #services.mozillavpn.enable = true;
 }

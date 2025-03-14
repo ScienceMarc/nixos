@@ -18,7 +18,9 @@
   #boot.kernelPackages = pkgs.linuxPackages_testing;
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  # Nvidia settings
+  #systemd.network.enable = true;
+
+  # GPU settings
 
   # Enable OpenGL
   hardware.graphics = {
@@ -33,15 +35,15 @@
 
   chaotic.mesa-git.enable = true;
 
-  # Get git version of linux-firmware
-  hardware.firmware = with pkgs; [
-    (linux-firmware.overrideAttrs (old: {
-      src = builtins.fetchGit {
-        url = "https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git";
-        #rev = "de78f0aaafb96b3a47c92e9a47485a9509c51093";
-      };
-    }))
-  ];
+  # Get git version of linux-firmware (no longer need for 9070XT)
+  # hardware.firmware = with pkgs; [
+  #   (linux-firmware.overrideAttrs (old: {
+  #     src = builtins.fetchGit {
+  #       url = "https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git";
+  #       # rev = "de78f0aaafb96b3a47c92e9a47485a9509c51093"; # Uncomment this line to allow for pure builds
+  #     };
+  #   }))
+  # ];
 
 
 
