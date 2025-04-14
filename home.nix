@@ -20,7 +20,7 @@
       tree
       gnumake
       wget
-      btop
+      btop-rocm
       zip
       loc
       jq
@@ -43,6 +43,7 @@
       # ----- dev -------
       go
       gcc
+      cargo
 
       # ----- applications -----
     
@@ -60,6 +61,7 @@
       obsidian
       onlyoffice-bin
       xournalpp
+      audacity
 
       # visual editing
       krita
@@ -154,6 +156,7 @@
   
   programs.direnv = {
     enable = true;
+    nix-direnv.enable = true;
     config = {};
   };
   

@@ -22,12 +22,13 @@
             };
 
             modules-right = [
+                "power-profiles-daemon"
                 "backlight"
+                "temperature"
                 "cpu"
                 "memory"
                 "pulseaudio"
                 "network"
-                # "temperature" doesn't work for some reason
                 "battery"
                 "clock"
                 "tray"
@@ -89,6 +90,18 @@
                 format-icons = [ "" "" "" ];
                 hwmon-path-abs = "/sys/devices/platform/coretemp.0/hwmon/hwmon6";
                 input-filename = "temp1_input";
+            };
+
+            power-profiles-daemon = {
+                format = "{icon}";
+                tooltip-format = "Power profile: {profile}nDriver: {driver}";
+                tooltip = true;
+                format-icons = {
+                    default = "";
+                    performance = "";
+                    balanced = "";
+                    power-saver = "";
+                };
             };
         }];
     };

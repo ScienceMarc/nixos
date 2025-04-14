@@ -16,7 +16,7 @@
         #cinnamon.nemo # 
 
         hyprpaper # Wallpaper
-        hyprshot # Screenshot
+        swappy slurp grim wl-clipboard # Screenshot
         hyprpicker # Color picker
         hyprlock # Lock screen
         hypridle # Idle daemon
@@ -150,8 +150,9 @@
                 
 
                 # Screenshotting
-                ", Print, exec, hyprshot -m region --clipboard-only"
-                "SHIFT, Print, exec, hyprshot -m output --clipboard-only"
+                ", Print, exec, grim -g \"$(slurp)\" - | wl-copy"
+                "SHIFT, Print, exec, grim -g \"$(slurp)\" - | swappy -f -"
+                "ALT, Print, exec, grim - | swappy -f -"
 
                 # Move focus with mainMod + arrow keys
                 "$mainMod, left, movefocus, l"
