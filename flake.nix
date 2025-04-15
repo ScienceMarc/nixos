@@ -37,17 +37,12 @@
         system = "x86_64-linux";
 	      modules = [ ./system/laptop.nix ];
       };
-      "marc-desktop" = nixpkgs-unstable.lib.nixosSystem {
+      "marc-desktop" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [ 
           ./system/desktop.nix 
           hyprland.nixosModules.default
-          chaotic.nixosModules.default
         ];
-
-        
-        
-
       };
     };
   };
