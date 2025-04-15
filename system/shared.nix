@@ -120,6 +120,11 @@
   # USB automounting
   services.gvfs.enable = true;
 
+  services.ollama = {
+    enable = true;
+    acceleration = "rocm";
+  };
+
   # nix.gc = {
   #   automatic = true;
   #   dates = "monthly";
