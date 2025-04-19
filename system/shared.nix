@@ -17,7 +17,7 @@
     settings.experimental-features = [ "nix-command" "flakes" ];
   };
 
-  nixpkgs.config.allowUnfree = true;
+  #nixpkgs.config.allowUnfree = true;
 
 
   # Bootloader.
@@ -56,6 +56,13 @@
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
 
+  environment.variables = {
+    QT_QPA_PLATFORMTHEME = "kde";
+  };
+
+  # Xfce
+  #services.xserver.desktopManager.xfce.enable = true;
+
   # Enable hyprland
   programs.hyprland.enable = true;
   xdg.portal = {
@@ -90,7 +97,7 @@
     #zsh
     neovim
     firefox
-    kate
+    #kate
     mullvad-vpn
     qemu
     virt-manager

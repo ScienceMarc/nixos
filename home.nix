@@ -53,7 +53,7 @@
       thunderbird
       qpwgraph
       telegram-desktop
-      zoom-us
+      #zoom-us
       vesktop
 
       # productivity
@@ -66,6 +66,7 @@
       # visual editing
       krita
       gimp
+      blender
 
       # games
       steam
@@ -94,8 +95,17 @@
       # Compatability
       wine
       winetricks
+      bottles
 
-      	
+      # kde apps
+      dolphin
+      okular
+      kate
+      gwenview
+      ark
+          	
+      # debug
+      glxinfo
 	
     ];
 
@@ -165,12 +175,6 @@
     extensions = with pkgs.vscode-extensions; [
       
     ];
-  };
-
-  programs.git = {
-    enable = true;
-    userName = "Marc Lavergne";
-    userEmail = "marc.lavergne@hotmail.com";
   };
   #services.mozillavpn.enable = true;
 }

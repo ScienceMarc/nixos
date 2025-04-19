@@ -59,6 +59,10 @@
             # monitor = ",preferred,1920x1080@144,1";
             monitor = [
                 "eDP-1, preferred, auto, 1.33"
+                "HDMI-A-2,2560x1080@60,0x0,1"
+                "DP-2,3440x1440@144,2560x-200,1"
+                "DP-1,1280x1024@60,6000x50,1"
+                "Unknown-1,disable"
             ];
 
             # Start up extra components
