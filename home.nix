@@ -89,8 +89,10 @@
       tor-browser
       wf-recorder
 
-      # Gephi
-      gephi
+      # SDR
+      dump1090
+      sdrpp
+      rtl_433
 
       # Compatability
       wine

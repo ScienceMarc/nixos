@@ -76,6 +76,11 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  # Blacklisted modules
+  boot.blacklistedKernelModules = [ 
+    "dvb_usb_rtl28xxu" # For SDRs
+  ];
+
   # Enable sound with pipewire.
   #sound.enable = true;
   hardware.pulseaudio.enable = false;
