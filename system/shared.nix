@@ -111,7 +111,7 @@
   users.users.marc = {
     isNormalUser = true;
     description = "marc";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "audio" "video" "render" "dialout" "libvirt" ];
     shell = pkgs.zsh;
   };
   programs.zsh.enable = true;
