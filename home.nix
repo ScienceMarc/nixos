@@ -88,11 +88,15 @@
       linux-wifi-hotspot
       tor-browser
       wf-recorder
+      nix-output-monitor
 
-      # SDR
+      # Radio
       dump1090
       sdrpp
       rtl_433
+      flrig
+      hamlib
+      wsjtx
 
       # Compatability
       wine

@@ -24,6 +24,8 @@
             "hm" = "home-manager";
             "vim" = "nvim";
             "switch" = "sudo nixos-rebuild switch";
+            "build" = "sudo nixos-rebuild build |& nom";
+            "update" = "(sudo echo 'beginning update') && (cd /etc/nixos && nix flake update) && (sudo nixos-rebuild switch) |& nom && (home-manager switch |& nom)";
             "ff" = "fastfetch";
             "inst" = "nix-shell --command 'zsh' -p";
             "fd" = "cd $(dirname $(fzf))";
