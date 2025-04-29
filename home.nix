@@ -22,7 +22,7 @@
       wget
       btop-rocm
       zip
-      loc
+      tokei
       jq
       yq
       pandoc
@@ -90,13 +90,16 @@
       wf-recorder
       nix-output-monitor
 
-      # Radio
+      # radio
       dump1090
       sdrpp
       rtl_433
       flrig
       hamlib
       wsjtx
+      js8call
+      fldigi
+      gridtracker
 
       # Compatability
       wine
@@ -104,7 +107,7 @@
       bottles
 
       # kde apps
-      dolphin
+      kdePackages.dolphin
       okular
       kate
       gwenview
