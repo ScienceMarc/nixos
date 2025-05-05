@@ -20,7 +20,6 @@
           config.allowUnfree = true;
           # required by logseq and obsidian
           config.permittedInsecurePackages = [
-            "electron-25.9.0"
             "electron-27.3.11"
           ];
         };
