@@ -6,7 +6,7 @@
   home = {
     username = "marc";
     homeDirectory = "/home/marc";
-    stateVersion = "24.11";
+    stateVersion = "25.05";
     packages = with pkgs; [
       # ----- SYSTEM -----
 
@@ -100,6 +100,7 @@
       js8call
       fldigi
       gridtracker
+      tqsl
 
       # Compatability
       wine
@@ -108,10 +109,10 @@
 
       # kde apps
       kdePackages.dolphin
-      okular
-      kate
-      gwenview
-      ark
+      kdePackages.okular
+      kdePackages.kate
+      kdePackages.gwenview
+      kdePackages.ark
           	
       # debug
       glxinfo
@@ -181,7 +182,7 @@
   
   programs.vscode = {
     enable = true;
-    extensions = with pkgs.vscode-extensions; [
+    profiles.default.extensions = with pkgs.vscode-extensions; [
       
     ];
   };
