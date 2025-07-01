@@ -24,6 +24,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  boot.loader.systemd-boot.configurationLimit = 5; # Keep the last 5 boot entries
+
   # Enable networking
   networking.networkmanager.enable = true;
 
@@ -83,7 +85,7 @@
 
   # Enable sound with pipewire.
   #sound.enable = true;
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -111,7 +113,7 @@
   users.users.marc = {
     isNormalUser = true;
     description = "marc";
-    extraGroups = [ "networkmanager" "wheel" "audio" "video" "render" "dialout" "libvirt" ];
+    extraGroups = [ "networkmanager" "wheel" "audio" "video" "render" "dialout" "libvirt" "docker" ];
     shell = pkgs.zsh;
   };
   programs.zsh.enable = true;
@@ -123,6 +125,16 @@
   # Virtual machines
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
+
+  # Enable Docker
+  virtualisation.docker = {
+    enable = true;
+    rootless = {
+      enable = true;
+      setSocketVariable = true;
+    };
+  };
+
 
   security.polkit.enable = true;
 

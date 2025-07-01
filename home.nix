@@ -11,9 +11,10 @@
       # ----- SYSTEM -----
 
       # fonts
-      fira-code-nerdfont
+      nerd-fonts.fira-code
       source-code-pro
       hack-font
+      font-awesome
       # nerdfonts
 
       # ----- cli tools -----
@@ -39,6 +40,7 @@
       powertop
       mc
       file
+      imagemagick
 
       # ----- dev -------
       go
@@ -88,7 +90,8 @@
       linux-wifi-hotspot
       tor-browser
       wf-recorder
-      nix-output-monitor
+      resources
+      pavucontrol
 
       # radio
       dump1090
