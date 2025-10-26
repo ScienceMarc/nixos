@@ -71,4 +71,8 @@
   ];
 
   services.tailscale.enable = true;
+
+  networking.firewall.allowedTCPPorts = [ 3000 ];
+  networking.nameservers = [ "1.1.1.1" ];
+
 }

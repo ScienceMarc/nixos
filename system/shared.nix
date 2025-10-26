@@ -17,7 +17,7 @@
     settings.experimental-features = [ "nix-command" "flakes" ];
   };
 
-  #nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfree = true;
 
 
   # Bootloader.
@@ -110,6 +110,9 @@
     virt-manager
     libvirt-glib
   ];
+
+  services.printing.drivers = [ pkgs.brlaser pkgs.brgenml1lpr pkgs.brgenml1cupswrapper ];
+
   users.users.marc = {
     isNormalUser = true;
     description = "marc";
@@ -139,7 +142,11 @@
   security.polkit.enable = true;
 
   # Printers
-  services.avahi.enable = true;
+  services.avahi = {
+    enable = true;
+    nssmdns = true;  # Allows .local name resolution
+    openFirewall = true;
+  };
 
   # USB automounting
   services.gvfs.enable = true;

@@ -68,7 +68,7 @@
       # visual editing
       krita
       gimp
-      blender
+      blender-hip
 
       # games
       steam
@@ -119,7 +119,10 @@
           	
       # debug
       glxinfo
-	
+
+      # 3d printing
+      prusa-slicer
+      freecad
     ];
 
 
@@ -190,5 +193,7 @@
     ];
   };
   #services.mozillavpn.enable = true;
+
+  
 }
 
