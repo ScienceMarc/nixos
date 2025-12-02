@@ -83,7 +83,7 @@
       gnomecast
       stellarium
       handbrake
-      electrum
+      #electrum
       qdirstat
 	    #plasma-browser-integration
       veikk-linux-driver-gui
@@ -123,6 +123,9 @@
       # 3d printing
       prusa-slicer
       freecad
+
+      # games
+      vintagestory
     ];
 
 
