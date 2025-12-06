@@ -114,10 +114,11 @@
                 rounding = 5;
             };
 
-            gestures = {
-                workspace_swipe = true;
-                workspace_swipe_fingers = 3;
-            };
+            #! Fix me
+            # gestures = {
+            #     workspace_swipe = true;
+            #     workspace_swipe_fingers = 3;
+            # };
 
             animations = {
                 enabled = "yes";

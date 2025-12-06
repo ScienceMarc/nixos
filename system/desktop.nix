@@ -41,13 +41,16 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.marc = {
     packages = with pkgs; [
-      ckb-next
+      #ckb-next
       gparted
       amdgpu_top
-
+      
     
     ];
   };
+
+  
+
 
   services.udev.extraRules = ''
     SUBSYSTEM=="usb",  ATTRS{idVendor}=="0416", ATTRS{idProduct}=="5020", MODE="0666"
@@ -64,7 +67,12 @@
   zramSwap.enable = true;
 
 
-  hardware.ckb-next.enable = true;
+  hardware.ckb-next = {
+    enable = true;
+    package = pkgs.ckb-next.overrideAttrs (old: {
+      cmakeFlags = (old.cmakeFlags or [ ]) ++ [ "-DUSE_DBUS_MENU=0" ];
+    });
+  };
 
   environment.systemPackages = with pkgs; [
     #nixpkgs-unstable.mesa

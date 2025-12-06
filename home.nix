@@ -6,7 +6,7 @@
   home = {
     username = "marc";
     homeDirectory = "/home/marc";
-    stateVersion = "25.05";
+    stateVersion = "25.11"; # NEVER CHANGE ME AGAIN
     packages = with pkgs; [
       # ----- SYSTEM -----
 
@@ -28,7 +28,7 @@
       yq
       pandoc
       fzf
-      globalprotect-openconnect
+      #globalprotect-openconnect
       tmux
       git
       fastfetch
@@ -61,9 +61,10 @@
       # productivity
       logseq
       obsidian
-      onlyoffice-bin
+      onlyoffice-desktopeditors
       xournalpp
       audacity
+      obs-studio
 
       # visual editing
       krita
@@ -74,8 +75,9 @@
       steam
       gamescope
       mangohud
-      protonup
+      protonup-ng
       prismlauncher
+      vintagestory
       
       # other
       qbittorrent
@@ -83,7 +85,7 @@
       gnomecast
       stellarium
       handbrake
-      #electrum
+      electrum
       qdirstat
 	    #plasma-browser-integration
       veikk-linux-driver-gui
@@ -94,7 +96,7 @@
       pavucontrol
 
       # radio
-      dump1090
+      dump1090-fa
       sdrpp
       rtl_433
       flrig
@@ -118,14 +120,12 @@
       kdePackages.ark
           	
       # debug
-      glxinfo
+      mesa-demos
 
       # 3d printing
       prusa-slicer
       freecad
 
-      # games
-      vintagestory
     ];
 
 
