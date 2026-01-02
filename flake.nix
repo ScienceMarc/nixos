@@ -6,6 +6,7 @@
 
     #chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
+    # ln -s /home/marc/.config/nix/flake.nix /home/marc/.config/home-manager/flake.nix
     home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     hyprland.url = "github:hyprwm/Hyprland";

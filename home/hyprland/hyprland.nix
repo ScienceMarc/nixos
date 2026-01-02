@@ -5,6 +5,7 @@
         ./waybar.nix
         ./hyprlock.nix
         ./hypridle.nix
+        ./hyprpaper.nix
     ];
 
     home.packages = with pkgs; [
@@ -58,11 +59,12 @@
             ### MONITOR CONFIG ###
             # monitor = ",preferred,1920x1080@144,1";
             monitor = [
-                "eDP-1, preferred, auto, 1.33"
+                "eDP-1, preferred, auto, 1.175"
                 "HDMI-A-2,2560x1080@60,0x0,1"
                 "DP-2,3440x1440@144,2560x-200,1"
                 "DP-1,1280x1024@60,6000x50,1"
                 "Unknown-1,disable"
+                ", preferred, auto, 1"
             ];
 
             # Start up extra components
@@ -94,7 +96,7 @@
             };
 
             xwayland = {
-                #force_zero_scaling = "true";
+                force_zero_scaling = "true";
             };
 
             general = {
@@ -114,11 +116,9 @@
                 rounding = 5;
             };
 
-            #! Fix me
-            # gestures = {
-            #     workspace_swipe = true;
-            #     workspace_swipe_fingers = 3;
-            # };
+            gesture = [
+                "3, horizontal, workspace"
+            ];
 
             animations = {
                 enabled = "yes";
@@ -152,6 +152,7 @@
                 "$mainMod SHIFT, P, exec, firefox --private-window"
                 "$mainMod SHIFT, N, exec, firefox -P Second_user"
                 "$mainMod SHIFT, C, exec, code"
+                "$mainMod SHIFT, V, exec, vesktop"
                 
 
                 # Screenshotting

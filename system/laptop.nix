@@ -10,7 +10,7 @@
 
     swapDevices = [{
         device = "/swapfile";
-        size = 16 * 1024; # Size of swap in MB
+        size = 32 * 1024; # Size of swap in MB
     }];
 
 
@@ -26,4 +26,5 @@
     services.power-profiles-daemon.enable = true;
 
     services.fwupd.enable = true;
+    networking.firewall.allowedTCPPorts = [ 3000 ];
 }

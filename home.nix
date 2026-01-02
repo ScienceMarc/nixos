@@ -41,6 +41,7 @@
       mc
       file
       imagemagick
+      bc
 
       # ----- dev -------
       go
@@ -94,6 +95,8 @@
       wf-recorder
       resources
       pavucontrol
+      nix-output-monitor
+      appimage-run
 
       # radio
       dump1090-fa
@@ -126,6 +129,7 @@
       prusa-slicer
       freecad
 
+	
     ];
 
 
