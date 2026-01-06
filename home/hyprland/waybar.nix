@@ -35,10 +35,10 @@
             ];
 
             battery = {
-                format = "{capacity}% - {power}W - {time} {icon}";
+                format = "{capacity}% - {power:4.2f}W - {time} {icon}";
                 #tooltip-format = "{power}W";
                 #format-alt = "{capacity}% {icon}";
-                format-charging = "{capacity}% {time} ";
+                format-charging = "{capacity}% - {power:4.2f}W - {time} ";
                 format-icons = [ "" "" "" "" "" ];
                 format-plugged = "{capacity}% ";
                 states = {
@@ -71,13 +71,13 @@
                 format-bluetooth = "{volume}% {icon} {format_source}";
                 format-bluetooth-muted = " {icon} {format_source}";
                 format-icons = {
-                car = "";
-                default = [ "" "" "" ];
-                handsfree = "";
-                headphones = "";
-                headset = "";
-                phone = "";
-                portable = "";
+                    car = "";
+                    default = [ "" "" "" ];
+                    handsfree = "";
+                    headphones = "";
+                    headset = "";
+                    phone = "";
+                    portable = "";
                 };
                 format-muted = " {format_source}";
                 format-source = "{volume}% ";

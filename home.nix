@@ -78,7 +78,7 @@
       mangohud
       protonup-ng
       prismlauncher
-      vintagestory
+      pkgs-unstable.vintagestory
       
       # other
       qbittorrent
