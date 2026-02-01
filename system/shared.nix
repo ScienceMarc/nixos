@@ -60,6 +60,8 @@
 
   environment.variables = {
     QT_QPA_PLATFORMTHEME = "kde";
+    XCURSOR_THEME = "Breeze";
+    XCURSOR_SIZE = "24";
   };
 
   # Xfce
@@ -109,6 +111,10 @@
     qemu
     virt-manager
     libvirt-glib
+
+    kdePackages.breeze
+    kdePackages.breeze-icons
+    kdePackages.breeze-gtk
   ];
 
   services.printing.drivers = [ pkgs.brlaser pkgs.brgenml1lpr pkgs.brgenml1cupswrapper ];
@@ -162,6 +168,7 @@
   # };
 
   programs.nix-ld.enable = true;
+
 
   system.stateVersion = "25.05";
 }

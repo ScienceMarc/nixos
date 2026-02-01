@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./desktop/hardware-configuration.nix
+      ./disk.nix
       ./shared.nix
     ];
   networking.hostName = "marc-desktop";
@@ -16,7 +17,7 @@
   time.timeZone = "America/Chicago";
 
   #boot.kernelPackages = pkgs.linuxPackages_testing;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  #boot.kernelPackages = pkgs.linuxPackages_latest;
 
 
   #systemd.network.enable = true;
