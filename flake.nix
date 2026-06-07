@@ -1,16 +1,12 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     #nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-master.url = "github:NixOS/nixpkgs/master";
 
-    #chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
-
-    # ln -s /home/marc/.config/nix/flake.nix /home/marc/.config/home-manager/flake.nix
-    home-manager.url = "github:nix-community/home-manager/release-25.11";
+    home-manager.url = "github:nix-community/home-manager/release-26.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    hyprland.url = "github:hyprwm/Hyprland";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     disko.url = "github:nix-community/disko";
@@ -33,6 +29,11 @@
             system = "x86_64-linux";
             config.allowUnfree = true;
           };
+
+          pkgs-master = import nixpkgs-master {
+            system = "x86_64-linux";
+            config.allowUnfree = true;
+          };
         };
         modules = [ ./home.nix ];
       };
@@ -46,7 +47,6 @@
         system = "x86_64-linux";
         modules = [ 
           ./system/desktop.nix 
-          hyprland.nixosModules.default
           inputs.disko.nixosModules.disko
         ];
       };

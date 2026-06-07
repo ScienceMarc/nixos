@@ -80,6 +80,7 @@
   ];
 
   services.tailscale.enable = true;
+  hardware.logitech.wireless.enable = true;
 
   networking.firewall.allowedTCPPorts = [ 3000 ];
   networking.nameservers = [ "1.1.1.1" ];

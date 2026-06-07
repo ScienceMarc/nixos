@@ -1,4 +1,4 @@
-{ lib, pkgs, pkgs-unstable, ... }: rec {
+{ lib, pkgs, pkgs-unstable, pkgs-master, ... }: rec {
   imports = [
     ./home/zsh/zsh.nix
     ./home/hyprland/hyprland.nix
@@ -47,6 +47,8 @@
       go
       gcc
       cargo
+      python3
+      nodejs
 
       # ----- applications -----
     
@@ -56,7 +58,7 @@
       thunderbird
       qpwgraph
       telegram-desktop
-      #zoom-us
+      zoom-us
       vesktop
 
       # productivity
@@ -78,7 +80,7 @@
       mangohud
       protonup-ng
       prismlauncher
-      pkgs-unstable.vintagestory
+      pkgs-master.vintagestory
       
       # other
       qbittorrent
@@ -97,6 +99,14 @@
       pavucontrol
       nix-output-monitor
       appimage-run
+      yt-dlp
+      solaar
+      #chromium
+
+      # btrfs
+      compsize
+      btrfs-list
+
 
       # radio
       dump1090-fa
@@ -115,8 +125,10 @@
       winetricks
       bottles
 
+      nautilus
+
       # kde apps
-      kdePackages.dolphin
+      #kdePackages.dolphin
       kdePackages.okular
       kdePackages.kate
       kdePackages.gwenview
@@ -149,6 +161,10 @@
   };
   
   programs.home-manager.enable = true;
+
+  home.activation.homeManagerSymlink = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    run ln $VERBOSE_ARG -sfnT "${home.homeDirectory}/.config/nixos" "${home.homeDirectory}/.config/home-manager"
+  '';
 
   xdg = {
     mime.enable = true;

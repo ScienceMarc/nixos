@@ -56,7 +56,8 @@
             misc = {
                 # This really should be default imo
                 # It's confusing otherwise
-                on_focus_under_fullscreen = 1;
+                new_window_takes_over_fullscreen = 2;
+                #on_focus_under_fullscreen = 1;
             };
 
             ### MONITOR CONFIG ###
@@ -96,6 +97,8 @@
 
                 sensitivity = "0";
                 numlock_by_default = true;
+
+                accel_profile="flat"; 
             };
 
             xwayland = {
@@ -142,7 +145,7 @@
                 "$mainMod, C, exec, foot"
                 "$mainMod, Q, killactive, "
                 # "$mainMod, M, exit, "
-                "$mainMod, E, exec, dolphin"
+                "$mainMod, E, exec, nautilus"
                 "$mainMod, V, togglefloating, "
                 "ALT, Space, exec, anyrun"
                 "$mainMod, P, pseudo, # dwindle"

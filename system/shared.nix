@@ -63,12 +63,21 @@
     XCURSOR_THEME = "Breeze";
     XCURSOR_SIZE = "24";
   };
+  
+  environment.etc."nixos".source = "/home/marc/.config/nixos";
 
   # Xfce
   #services.xserver.desktopManager.xfce.enable = true;
 
   # Enable hyprland
-  programs.hyprland.enable = true;
+  
+  programs.hyprland = {
+    enable = true;
+    withUWSM = true; # recommended for most users
+    xwayland.enable = true; # Xwayland can be disabled.
+  };
+  
+
   xdg.portal = {
     enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
@@ -170,5 +179,5 @@
   programs.nix-ld.enable = true;
 
 
-  system.stateVersion = "25.05";
+  system.stateVersion = "25.05"; # NEVER CHANGE THIS.
 }

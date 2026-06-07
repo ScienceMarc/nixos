@@ -40,7 +40,6 @@
                   extraArgs = [ "-L" "nixos" "-f" ];
 
                   subvolumes = {
-                    # root volume which is reset every boot
                     "/root" = {
                       mountpoint = "/";
                       mountOptions = [ "compress=zstd" "noatime" "ssd" "discard=async" ];
@@ -57,7 +56,6 @@
                       mountpoint = "/var/log";
                       mountOptions = [ "compress=zstd" "noatime" "ssd" "discard=async" ];
                     };
-
                     "/swap" = {
                       mountpoint = "/.swapvol";
                       mountOptions = [ "nodatacow" ];
