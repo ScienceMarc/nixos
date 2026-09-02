@@ -126,6 +126,8 @@
     kdePackages.breeze-gtk
   ];
 
+  #programs.firefox.configPath = ".mozilla/firefox"; # TODO: migrate to XDG, ${config.xdg.configHome}/mozilla/firefox
+
   services.printing.drivers = [ pkgs.brlaser pkgs.brgenml1lpr pkgs.brgenml1cupswrapper ];
 
   users.users.marc = {
@@ -166,15 +168,22 @@
   # USB automounting
   services.gvfs.enable = true;
 
-  services.ollama = {
-    enable = true;
-    acceleration = "rocm";
-  };
+  # services.ollama = {
+  #   enable = true;
+  #   acceleration = "rocm";
+  # };
 
   # nix.gc = {
   #   automatic = true;
   #   dates = "monthly";
   # };
+
+  programs.steam = {
+    enable = true;
+    extraPackages = [
+      pkgs.hidapi
+    ];
+  };
 
   programs.nix-ld.enable = true;
 

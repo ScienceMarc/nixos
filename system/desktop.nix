@@ -60,6 +60,17 @@
 
   systemd.services.NetworkManager-wait-online.enable = false;
 
+  boot.kernelPatches = [
+    {
+      name = "amdgpu-ignore-ctx-privileges";
+      patch = pkgs.fetchpatch {
+        name = "cap_sys_nice_begone.patch";
+        url = "https://github.com/Frogging-Family/community-patches/raw/master/linux61-tkg/cap_sys_nice_begone.mypatch";
+        hash = "sha256-Y3a0+x2xvHsfLax/uwycdJf3xLxvVfkfDVqjkxNaYEo=";
+      };
+    }
+  ];
+
   # swapDevices = [ {
   #   device = "/var/lib/swapfile";
   #   size = 64*1024; # Size in MiB
@@ -82,7 +93,13 @@
   services.tailscale.enable = true;
   hardware.logitech.wireless.enable = true;
 
-  networking.firewall.allowedTCPPorts = [ 3000 ];
+  programs.alvr = {
+    enable = true;
+    openFirewall = true;
+  };
+
+  networking.firewall.allowedTCPPorts = [ 3000 9943 9944 ];
+  networking.firewall.allowedUDPPorts = [ 9943 9944 ];
   networking.nameservers = [ "1.1.1.1" ];
 
 }

@@ -2,14 +2,15 @@
     #hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;
 
     imports = [
-        ./waybar.nix
+        ./ashell.nix
         ./hyprlock.nix
         ./hypridle.nix
         ./hyprpaper.nix
     ];
 
     home.packages = with pkgs; [
-        waybar # Bar
+        #waybar # Bar
+        #ashell # Bar
         swaynotificationcenter # Notif daemon
         libnotify # Needed by swaync
         foot # Terminal
@@ -56,7 +57,7 @@
             misc = {
                 # This really should be default imo
                 # It's confusing otherwise
-                new_window_takes_over_fullscreen = 2;
+                on_focus_under_fullscreen = 2;
                 #on_focus_under_fullscreen = 1;
             };
 
@@ -64,9 +65,9 @@
             # monitor = ",preferred,1920x1080@144,1";
             monitor = [
                 "eDP-1, preferred, auto, 1.175"
-                "HDMI-A-2,2560x1080@60,0x0,1"
-                "DP-2,3440x1440@144,2560x-200,1"
-                "DP-1,1280x1024@60,6000x50,1"
+                "HDMI-A-1,2560x1080@60,0x0,1" # left monitor
+                "DP-2,3440x1440@144,2560x-200,1" # middle monitor
+                "DP-1,1280x1024@60,6000x50,1" # right monitor
                 "Unknown-1,disable"
                 ", preferred, auto, 1"
             ];
@@ -74,7 +75,7 @@
             # Start up extra components
             exec-once = [
                 #"waybar & dunst & libnotify & hyperpaper & nm-applet & blueman-applet"
-                "swaync & libnotify & hyperpaper & nm-applet & blueman-applet"
+                "ashell & swaync & libnotify & hyperpaper & nm-applet & blueman-applet"
                 "lxqt-policykit-agent"
                 # "[workspace 1 silent] firefox"
                 # "[workspace 2 silent] discord"
@@ -149,7 +150,7 @@
                 "$mainMod, V, togglefloating, "
                 "ALT, Space, exec, anyrun"
                 "$mainMod, P, pseudo, # dwindle"
-                "$mainMod, J, togglesplit, # dwindle"
+                "$mainMod, J, layoutmsg, togglesplit, # dwindle"
 
                 "$mainMod, L, exec, hyprlock"
                 "$mainMod, N, exec, swaync-client -t"

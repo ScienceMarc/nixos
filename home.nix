@@ -62,17 +62,18 @@
       vesktop
 
       # productivity
-      logseq
+      #logseq
       obsidian
       onlyoffice-desktopeditors
       xournalpp
       audacity
       obs-studio
+      simple-scan
 
       # visual editing
       krita
       gimp
-      blender-hip
+      pkgsRocm.blender
 
       # games
       steam
@@ -218,5 +219,6 @@
   #services.mozillavpn.enable = true;
 
   
+
 }
 
