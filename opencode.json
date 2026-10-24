@@ -1,42 +1,86 @@
+
 {
-	"$schema": "https://opencode.ai/config.json",
-	"provider": {
-		"llama.cpp": {
-			"npm": "@ai-sdk/openai-compatible",
-			"name": "Local llama.cpp",
-			"options": {
-				"baseURL": "http://127.0.0.1:3000/v1"
-			},
-			"models": {
-				"unsloth/Qwen3.5-9B-GGUF:Q6_K": {
-					"name": "Local Qwen",
-					"limit": {
-						"context": 32768,
-						"output": 8192
-					}
-				}
-			}
-		}
-	},
-	"permission": {
-		"read": {
-			"*": "allow",
-			"*.env": "ask",
-			"*.env.*": "ask"
-		},
-		"edit": "ask",
-		"external_directory": "ask",
-		"bash": {
-			"*": "ask",
-			"git status*": "allow",
-			"git diff*": "allow",
-			"git branch*": "allow",
-			"git commit*": "deny",
-			"git push*": "deny",
-			"sudo *": "deny",
-			"nixos-rebuild switch*": "deny",
-			"home-manager switch*": "deny"
-		},
-		"task": "deny"
-	}
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "llama.cpp": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Local llama.cpp",
+      "options": {
+        "baseURL": "http://127.0.0.1:3000/v1"
+      },
+      "models": {
+        "unsloth/Qwen3.5-9B-GGUF:Q6_K": {
+          "name": "Local Qwen",
+          "limit": {
+            "context": 32768,
+            "output": 8192
+          }
+        }
+      }
+    }
+  },
+  "permission": {
+    "read": {
+      "*": "allow",
+      "*.env": "ask",
+      "*.env.*": "ask"
+    },
+    "edit": "allow",
+    "external_directory": "ask",
+    "glob": "allow",
+    "grep": "allow",
+    "list": "allow",
+    "bash": {
+      "*": "ask",
+
+      "pwd": "allow",
+      "ls *": "allow",
+      "ls": "allow",
+      "find *": "allow",
+      "grep *": "allow",
+      "rg *": "allow",
+      "cat *": "allow",
+      "head *": "allow",
+      "tail *": "allow",
+      "wc *": "allow",
+
+      "git status*": "allow",
+      "git diff*": "allow",
+      "git log*": "allow",
+      "git branch*": "allow",
+      "git show*": "allow",
+      "git ls-files*": "allow",
+
+      "nix eval*": "allow",
+      "nix flake check*": "allow",
+      "nix flake show*": "allow",
+      "nix-instantiate *": "allow",
+      "nixfmt *": "allow",
+
+      "nix build*": "ask",
+      "nix develop*": "ask",
+      "nix run*": "ask",
+      "nix shell*": "ask",
+
+      "rm *": "ask",
+      "mv *": "ask",
+      "cp *": "ask",
+
+      "git commit*": "deny",
+      "git push*": "deny",
+      "git reset --hard*": "deny",
+      "git clean*": "deny",
+      "git checkout -- *": "deny",
+      "git restore *": "deny",
+
+      "sudo *": "deny",
+      "doas *": "deny",
+      "nixos-rebuild *": "deny",
+      "home-manager switch*": "deny",
+      "systemctl *": "deny",
+      "nix-collect-garbage*": "deny",
+      "nix store gc*": "deny"
+    },
+    "task": "deny"
+  }
 }
