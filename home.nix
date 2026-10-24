@@ -103,6 +103,10 @@
       yt-dlp
       solaar
       #chromium
+      libjxl
+      usbutils
+      smartmontools
+      psmisc
 
       # btrfs
       compsize

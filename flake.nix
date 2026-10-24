@@ -45,6 +45,14 @@
       };
       "marc-desktop" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+
+        specialArgs = {
+          pkgs-unstable = import nixpkgs-unstable {
+            system = "x86_64-linux";
+            config.allowUnfree = true;
+          };
+        };
+
         modules = [ 
           ./system/desktop.nix 
           inputs.disko.nixosModules.disko

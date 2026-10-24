@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, nixpkgs-unstable, ... }:
+{ config, pkgs, lib, pkgs-unstable, ... }:
 
 {
   imports =
@@ -60,16 +60,12 @@
 
   systemd.services.NetworkManager-wait-online.enable = false;
 
-  boot.kernelPatches = [
-    {
-      name = "amdgpu-ignore-ctx-privileges";
-      patch = pkgs.fetchpatch {
-        name = "cap_sys_nice_begone.patch";
-        url = "https://github.com/Frogging-Family/community-patches/raw/master/linux61-tkg/cap_sys_nice_begone.mypatch";
-        hash = "sha256-Y3a0+x2xvHsfLax/uwycdJf3xLxvVfkfDVqjkxNaYEo=";
-      };
-    }
-  ];
+  services.wivrn = {
+    enable = true;
+    package = pkgs-unstable.wivrn;
+    openFirewall = true;
+    autoStart = true;
+  };
 
   # swapDevices = [ {
   #   device = "/var/lib/swapfile";
