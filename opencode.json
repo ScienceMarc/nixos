@@ -1,16 +1,27 @@
 
 {
   "$schema": "https://opencode.ai/config.json",
-  "provider": {
+
+  "model": "llama.cpp/coder",
+
+  "providers": {
     "llama.cpp": {
-      "npm": "@ai-sdk/openai-compatible",
       "name": "Local llama.cpp",
-      "options": {
-        "baseURL": "http://127.0.0.1:3000/v1"
+      "package": "@opencode/ai/providers/openai-compatible",
+      "settings": {
+        "baseURL": "http://127.0.0.1:3000/v1",
+        "headerTimeout": 600000,
+        "chunkTimeout": 900000
       },
       "models": {
-        "unsloth/Qwen3.5-9B-GGUF:Q6_K": {
-          "name": "Local Qwen",
+        "coder": {
+          "modelID": "Qwen3-Coder-30B-A3B-Instruct-GGUF-IQ3_XXS",
+          "name": "Qwen3 Coder 30B A3B (IQ3_XXS)",
+          "capabilities": {
+            "tools": true,
+            "input": ["text"],
+            "output": ["text"]
+          },
           "limit": {
             "context": 32768,
             "output": 8192
@@ -19,68 +30,262 @@
       }
     }
   },
-  "permission": {
-    "read": {
-      "*": "allow",
-      "*.env": "ask",
-      "*.env.*": "ask"
+
+  "permissions": [
+    {
+      "action": "read",
+      "resource": "*",
+      "effect": "allow"
     },
-    "edit": "allow",
-    "external_directory": "ask",
-    "glob": "allow",
-    "grep": "allow",
-    "list": "allow",
-    "bash": {
-      "*": "ask",
-
-      "pwd": "allow",
-      "ls *": "allow",
-      "ls": "allow",
-      "find *": "allow",
-      "grep *": "allow",
-      "rg *": "allow",
-      "cat *": "allow",
-      "head *": "allow",
-      "tail *": "allow",
-      "wc *": "allow",
-
-      "git status*": "allow",
-      "git diff*": "allow",
-      "git log*": "allow",
-      "git branch*": "allow",
-      "git show*": "allow",
-      "git ls-files*": "allow",
-
-      "nix eval*": "allow",
-      "nix flake check*": "allow",
-      "nix flake show*": "allow",
-      "nix-instantiate *": "allow",
-      "nixfmt *": "allow",
-
-      "nix build*": "ask",
-      "nix develop*": "ask",
-      "nix run*": "ask",
-      "nix shell*": "ask",
-
-      "rm *": "ask",
-      "mv *": "ask",
-      "cp *": "ask",
-
-      "git commit*": "deny",
-      "git push*": "deny",
-      "git reset --hard*": "deny",
-      "git clean*": "deny",
-      "git checkout -- *": "deny",
-      "git restore *": "deny",
-
-      "sudo *": "deny",
-      "doas *": "deny",
-      "nixos-rebuild *": "deny",
-      "home-manager switch*": "deny",
-      "systemctl *": "deny",
-      "nix-collect-garbage*": "deny",
-      "nix store gc*": "deny"
+    {
+      "action": "read",
+      "resource": "*.env",
+      "effect": "ask"
     },
-    "task": "deny"
-  }
+    {
+      "action": "read",
+      "resource": "*.env.*",
+      "effect": "ask"
+    },
+
+    {
+      "action": "edit",
+      "resource": "*",
+      "effect": "allow"
+    },
+    {
+      "action": "external_directory",
+      "resource": "*",
+      "effect": "ask"
+    },
+    {
+      "action": "glob",
+      "resource": "*",
+      "effect": "allow"
+    },
+    {
+      "action": "grep",
+      "resource": "*",
+      "effect": "allow"
+    },
+
+    {
+      "action": "shell",
+      "resource": "*",
+      "effect": "ask"
+    },
+
+    {
+      "action": "shell",
+      "resource": "pwd",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "ls *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "find *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "grep *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "rg *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "cat *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "head *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "tail *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "wc *",
+      "effect": "allow"
+    },
+
+    {
+      "action": "shell",
+      "resource": "git status *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "git diff *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "git log *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "git branch *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "git show *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "git ls-files *",
+      "effect": "allow"
+    },
+
+    {
+      "action": "shell",
+      "resource": "nix eval *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "nix flake check *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "nix flake show *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "nix-instantiate *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "nixfmt *",
+      "effect": "allow"
+    },
+
+    {
+      "action": "shell",
+      "resource": "nix build *",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "nix develop *",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "nix run *",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "nix shell *",
+      "effect": "ask"
+    },
+
+    {
+      "action": "shell",
+      "resource": "rm *",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "mv *",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "cp *",
+      "effect": "ask"
+    },
+
+    {
+      "action": "shell",
+      "resource": "git commit *",
+      "effect": "deny"
+    },
+    {
+      "action": "shell",
+      "resource": "git push *",
+      "effect": "deny"
+    },
+    {
+      "action": "shell",
+      "resource": "git reset --hard *",
+      "effect": "deny"
+    },
+    {
+      "action": "shell",
+      "resource": "git clean *",
+      "effect": "deny"
+    },
+    {
+      "action": "shell",
+      "resource": "git checkout -- *",
+      "effect": "deny"
+    },
+    {
+      "action": "shell",
+      "resource": "git restore *",
+      "effect": "deny"
+    },
+
+    {
+      "action": "shell",
+      "resource": "sudo *",
+      "effect": "deny"
+    },
+    {
+      "action": "shell",
+      "resource": "doas *",
+      "effect": "deny"
+    },
+    {
+      "action": "shell",
+      "resource": "nixos-rebuild *",
+      "effect": "deny"
+    },
+    {
+      "action": "shell",
+      "resource": "home-manager switch *",
+      "effect": "deny"
+    },
+    {
+      "action": "shell",
+      "resource": "systemctl *",
+      "effect": "deny"
+    },
+    {
+      "action": "shell",
+      "resource": "nix-collect-garbage *",
+      "effect": "deny"
+    },
+    {
+      "action": "shell",
+      "resource": "nix store gc *",
+      "effect": "deny"
+    },
+
+    {
+      "action": "subagent",
+      "resource": "*",
+      "effect": "deny"
+    }
+  ]
 }

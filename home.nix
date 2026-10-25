@@ -92,6 +92,9 @@ rec {
       prismlauncher
       pkgs-master.vintagestory
 
+      # AI
+      pkgs-unstable.opencode
+
       # other
       qbittorrent
       vlc
