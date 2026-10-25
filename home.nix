@@ -191,6 +191,7 @@
         "text/plain" = kate;
         "text/markdown" = kate;
         "text/x-markdown" = kate;
+        "text/x-log" = kate;
 
         # Code
         "text/x-python" = code;
@@ -207,16 +208,27 @@
         "text/x-script.python" = code;
         "text/x-cmake" = code;
         "text/x-rust" = code;
+        "text/x-nix" = code;
+        "application/yaml" = code;
+        "text/yaml" = code;
+        "application/x-yaml" = code;
+        "application/toml" = code;
+        "application/sql" = code;
+        "text/x-patch" = code;
+        "text/x-diff" = code;
 
         # Web
         "text/html" = firefox;
         "application/xhtml+xml" = firefox;
         "x-scheme-handler/http" = firefox;
         "x-scheme-handler/https" = firefox;
+        "x-scheme-handler/about" = firefox;
+        "x-scheme-handler/unknown" = firefox;
 
         # Documents
         "application/pdf" = okular;
         "application/epub+zip" = okular;
+        "application/x-mobipocket-ebook" = okular;
         "application/rtf" = onlyoffice;
         "application/msword" = onlyoffice;
         "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = onlyoffice;
@@ -233,8 +245,24 @@
         "application/vnd.openxmlformats-officedocument.presentationml.presentation" = onlyoffice;
         "application/vnd.oasis.opendocument.presentation" = onlyoffice;
 
-        # Images
-        "image/*" = gwenview;
+        
+        # Krita projects and editable graphics
+        "application/x-krita" = "org.kde.krita.desktop";
+        "image/x-psd" = "org.kde.krita.desktop";
+        "image/openraster" = "org.kde.krita.desktop";
+
+        # Common raster formats
+        "image/jpeg" = gwenview;
+        "image/png" = gwenview;
+        "image/gif" = gwenview;
+        "image/bmp" = gwenview;
+        "image/tiff" = gwenview;
+        "image/webp" = gwenview;
+        "image/x-webp" = gwenview;
+
+        "image/avif" = gwenview;
+        "image/heif" = gwenview;
+        "image/jxl" = gwenview;
 
         # Audio
         "audio/mpeg" = vlc;
