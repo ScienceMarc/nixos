@@ -2,7 +2,12 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   # imports = [
@@ -14,11 +19,13 @@
 
   nix = {
     package = pkgs.nixVersions.stable;
-    settings.experimental-features = [ "nix-command" "flakes" ];
+    settings.experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
   };
 
   nixpkgs.config.allowUnfree = true;
-
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -29,14 +36,12 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
-
   # Enable bluetooth
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
-
 
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_US.UTF-8";
@@ -53,7 +58,6 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
@@ -63,20 +67,19 @@
     XCURSOR_THEME = "Breeze";
     XCURSOR_SIZE = "24";
   };
-  
+
   environment.etc."nixos".source = "/home/marc/.config/nixos";
 
   # Xfce
   #services.xserver.desktopManager.xfce.enable = true;
 
   # Enable hyprland
-  
+
   programs.hyprland = {
     enable = true;
     withUWSM = true; # recommended for most users
     xwayland.enable = true; # Xwayland can be disabled.
   };
-  
 
   xdg.portal = {
     enable = true;
@@ -90,7 +93,7 @@
   services.printing.enable = true;
 
   # Blacklisted modules
-  boot.blacklistedKernelModules = [ 
+  boot.blacklistedKernelModules = [
     "dvb_usb_rtl28xxu" # For SDRs
   ];
 
@@ -128,12 +131,25 @@
 
   #programs.firefox.configPath = ".mozilla/firefox"; # TODO: migrate to XDG, ${config.xdg.configHome}/mozilla/firefox
 
-  services.printing.drivers = [ pkgs.brlaser pkgs.brgenml1lpr pkgs.brgenml1cupswrapper ];
+  services.printing.drivers = [
+    pkgs.brlaser
+    pkgs.brgenml1lpr
+    pkgs.brgenml1cupswrapper
+  ];
 
   users.users.marc = {
     isNormalUser = true;
     description = "marc";
-    extraGroups = [ "networkmanager" "wheel" "audio" "video" "render" "dialout" "libvirt" "docker" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "audio"
+      "video"
+      "render"
+      "dialout"
+      "libvirt"
+      "docker"
+    ];
     shell = pkgs.zsh;
   };
   programs.zsh.enable = true;
@@ -155,13 +171,12 @@
     };
   };
 
-
   security.polkit.enable = true;
 
   # Printers
   services.avahi = {
     enable = true;
-    nssmdns = true;  # Allows .local name resolution
+    nssmdns = true; # Allows .local name resolution
     openFirewall = true;
   };
 
@@ -186,7 +201,6 @@
   };
 
   programs.nix-ld.enable = true;
-
 
   system.stateVersion = "25.05"; # NEVER CHANGE THIS.
 }

@@ -2,15 +2,21 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, pkgs-unstable, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  pkgs-unstable,
+  ...
+}:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./desktop/hardware-configuration.nix
-      ./disk.nix
-      ./shared.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./desktop/hardware-configuration.nix
+    ./disk.nix
+    ./shared.nix
+  ];
   networking.hostName = "marc-desktop";
 
   # Set your time zone.
@@ -18,7 +24,6 @@
 
   #boot.kernelPackages = pkgs.linuxPackages_testing;
   #boot.kernelPackages = pkgs.linuxPackages_latest;
-
 
   #systemd.network.enable = true;
 
@@ -45,13 +50,9 @@
       #ckb-next
       gparted
       amdgpu_top
-      
-    
+
     ];
   };
-
-  
-
 
   services.udev.extraRules = ''
     SUBSYSTEM=="usb",  ATTRS{idVendor}=="0416", ATTRS{idProduct}=="5020", MODE="0666"
@@ -74,7 +75,6 @@
 
   zramSwap.enable = true;
 
-
   hardware.ckb-next = {
     enable = true;
     package = pkgs.ckb-next.overrideAttrs (old: {
@@ -94,8 +94,15 @@
     openFirewall = true;
   };
 
-  networking.firewall.allowedTCPPorts = [ 3000 9943 9944 ];
-  networking.firewall.allowedUDPPorts = [ 9943 9944 ];
+  networking.firewall.allowedTCPPorts = [
+    3000
+    9943
+    9944
+  ];
+  networking.firewall.allowedUDPPorts = [
+    9943
+    9944
+  ];
   networking.nameservers = [ "1.1.1.1" ];
 
 }

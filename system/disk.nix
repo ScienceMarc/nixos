@@ -37,24 +37,49 @@
                 content = {
                   type = "btrfs";
                   # name the volume
-                  extraArgs = [ "-L" "nixos" "-f" ];
+                  extraArgs = [
+                    "-L"
+                    "nixos"
+                    "-f"
+                  ];
 
                   subvolumes = {
                     "/root" = {
                       mountpoint = "/";
-                      mountOptions = [ "compress=zstd" "noatime" "ssd" "discard=async" ];
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                        "ssd"
+                        "discard=async"
+                      ];
                     };
                     #
                     "/home" = {
                       mountpoint = "/home";
-                      mountOptions = [ "compress=zstd" "noatime" "ssd" "discard=async" ]; };
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                        "ssd"
+                        "discard=async"
+                      ];
+                    };
                     "/nix" = {
                       mountpoint = "/nix";
-                      mountOptions = [ "compress=zstd" "noatime" "ssd" "discard=async" ];
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                        "ssd"
+                        "discard=async"
+                      ];
                     };
                     "/var/log" = {
                       mountpoint = "/var/log";
-                      mountOptions = [ "compress=zstd" "noatime" "ssd" "discard=async" ];
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                        "ssd"
+                        "discard=async"
+                      ];
                     };
                     "/swap" = {
                       mountpoint = "/.swapvol";
