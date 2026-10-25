@@ -1,4 +1,4 @@
-{ lib, pkgs, pkgs-unstable, pkgs-master, ... }: rec {
+{ lib, config, pkgs, pkgs-unstable, pkgs-master, ... }: rec {
   imports = [
     ./home/zsh/zsh.nix
     ./home/hyprland/hyprland.nix
@@ -201,7 +201,10 @@
   fonts.fontconfig.enable = true;
 
 
-  programs.firefox.enable = true;
+  programs.firefox = {
+    enable = true;
+    configPath = "${config.xdg.configHome}/mozilla/firefox";
+  };
 
   programs.gpg = {
     enable = true;
