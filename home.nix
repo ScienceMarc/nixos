@@ -42,6 +42,7 @@
       file
       imagemagick
       bc
+      nixfmt
 
       # ----- dev -------
       go
