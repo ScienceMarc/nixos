@@ -84,7 +84,7 @@
       # Start up extra components
       exec-once = [
         #"waybar & dunst & libnotify & hyperpaper & nm-applet & blueman-applet"
-        "ashell & swaync & libnotify & hyperpaper & nm-applet & blueman-applet"
+        "ashell & swaync & hyprpaper & nm-applet & blueman-applet"
         "lxqt-policykit-agent"
         # "[workspace 1 silent] firefox"
         # "[workspace 2 silent] discord"
