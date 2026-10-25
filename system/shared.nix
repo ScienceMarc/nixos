@@ -129,8 +129,6 @@
     kdePackages.breeze-gtk
   ];
 
-  #programs.firefox.configPath = ".mozilla/firefox"; # TODO: migrate to XDG, ${config.xdg.configHome}/mozilla/firefox
-
   services.printing.drivers = [
     pkgs.brlaser
     pkgs.brgenml1lpr
