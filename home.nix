@@ -315,8 +315,9 @@ rec {
     userDirs = {
       enable = true;
       createDirectories = true;
+      setSessionVariables = false;
       extraConfig = {
-        XDG_MISC_DIR = "${home.homeDirectory}/Misc";
+        MISC = "${home.homeDirectory}/Misc";
       };
     };
   };
