@@ -173,15 +173,110 @@
 
   xdg = {
     mime.enable = true;
-    # mimeApps = {
-    #   enable = true;
-    #   defaultApplications = {
-    #     "application/pdf" = "org.pwmt.zathura-pdf-mupdf.desktop;";
-    #   };
-    #   #defaultApplications = {
-    #   #  "word"
-    #   #};
-    # };
+    mimeApps = {
+      enable = true;
+
+      defaultApplications = let
+        kate = "org.kde.kate.desktop";
+        code = "code.desktop";
+        firefox = "firefox.desktop";
+        okular = "org.kde.okular.desktop";
+        onlyoffice = "onlyoffice-desktopeditors.desktop";
+        gwenview = "org.kde.gwenview.desktop";
+        vlc = "vlc.desktop";
+        ark = "org.kde.ark.desktop";
+        thunderbird = "thunderbird.desktop";
+      in {
+        # Text
+        "text/plain" = kate;
+        "text/markdown" = kate;
+        "text/x-markdown" = kate;
+
+        # Code
+        "text/x-python" = code;
+        "text/x-c" = code;
+        "text/x-c++" = code;
+        "text/x-java" = code;
+        "text/javascript" = code;
+        "application/javascript" = code;
+        "text/css" = code;
+        "application/json" = code;
+        "application/xml" = code;
+        "text/xml" = code;
+        "application/x-shellscript" = code;
+        "text/x-script.python" = code;
+        "text/x-cmake" = code;
+        "text/x-rust" = code;
+
+        # Web
+        "text/html" = firefox;
+        "application/xhtml+xml" = firefox;
+        "x-scheme-handler/http" = firefox;
+        "x-scheme-handler/https" = firefox;
+
+        # Documents
+        "application/pdf" = okular;
+        "application/epub+zip" = okular;
+        "application/rtf" = onlyoffice;
+        "application/msword" = onlyoffice;
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = onlyoffice;
+        "application/vnd.oasis.opendocument.text" = onlyoffice;
+
+        # Spreadsheets
+        "text/csv" = onlyoffice;
+        "application/vnd.ms-excel" = onlyoffice;
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" = onlyoffice;
+        "application/vnd.oasis.opendocument.spreadsheet" = onlyoffice;
+
+        # Presentations
+        "application/vnd.ms-powerpoint" = onlyoffice;
+        "application/vnd.openxmlformats-officedocument.presentationml.presentation" = onlyoffice;
+        "application/vnd.oasis.opendocument.presentation" = onlyoffice;
+
+        # Images
+        "image/*" = gwenview;
+
+        # Audio
+        "audio/mpeg" = vlc;
+        "audio/wav" = vlc;
+        "audio/x-wav" = vlc;
+        "audio/flac" = vlc;
+        "audio/ogg" = vlc;
+        "audio/mp4" = vlc;
+        "audio/aac" = vlc;
+
+        # Video
+        "video/mp4" = vlc;
+        "video/webm" = vlc;
+        "video/x-msvideo" = vlc;
+        "video/mpeg" = vlc;
+        "video/x-matroska" = vlc;
+        "video/quicktime" = vlc;
+        "video/x-flv" = vlc;
+
+        # Archives
+        "application/zip" = ark;
+        "application/x-tar" = ark;
+        "application/gzip" = ark;
+        "application/x-gzip" = ark;
+        "application/x-bzip2" = ark;
+        "application/x-7z-compressed" = ark;
+        "application/x-rar" = ark;
+        "application/vnd.rar" = ark;
+        "application/x-xz" = ark;
+        "application/zstd" = ark;
+
+        # Email
+        "x-scheme-handler/mailto" = thunderbird;
+
+        # Communication
+        "x-scheme-handler/discord" = "discord.desktop";
+        "x-scheme-handler/telegram" = "org.telegram.desktop.desktop";
+        "x-scheme-handler/tg" = "org.telegram.desktop.desktop";
+        "x-scheme-handler/zoommtg" = "Zoom.desktop";
+      };
+    };
+
     userDirs = {
       enable = true;
       createDirectories = true;
