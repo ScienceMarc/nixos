@@ -10,6 +10,7 @@ rec {
   imports = [
     ./home/zsh/zsh.nix
     ./home/hyprland/hyprland.nix
+    ./home/vscode.nix
   ];
   home = {
     username = "marc";
@@ -350,12 +351,7 @@ rec {
     config = { };
   };
 
-  programs.vscode = {
-    enable = true;
-    profiles.default.extensions = with pkgs.vscode-extensions; [
-
-    ];
-  };
+  
   #services.mozillavpn.enable = true;
 
 }
