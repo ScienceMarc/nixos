@@ -21,6 +21,8 @@
     libnotify # Needed by swaync
     foot # Terminal
     anyrun # App launcher
+    cliphist # Clipboard history
+    rofi # Clipboard history picker
     #cinnamon.nemo #
 
     hyprpaper # Wallpaper
@@ -86,6 +88,8 @@
         #"waybar & dunst & libnotify & hyperpaper & nm-applet & blueman-applet"
         "ashell & swaync & hyprpaper & nm-applet & blueman-applet"
         "lxqt-policykit-agent"
+        "wl-paste --type text --watch cliphist store"
+        "wl-paste --type image --watch cliphist store"
         # "[workspace 1 silent] firefox"
         # "[workspace 2 silent] discord"
         # "[workspace 2 silent] telegram-desktop"
@@ -156,7 +160,8 @@
         "$mainMod, Q, killactive, "
         # "$mainMod, M, exit, "
         "$mainMod, E, exec, nautilus"
-        "$mainMod, V, togglefloating, "
+        "$mainMod, V, exec, selection=$(cliphist list | rofi -dmenu -p Clipboard); [ -n \"$selection\" ] && printf '%s\\n' \"$selection\" | cliphist decode | wl-copy"
+        "$mainMod ALT, V, togglefloating, "
         "ALT, Space, exec, anyrun"
         "$mainMod, P, pseudo, # dwindle"
         "$mainMod, J, layoutmsg, togglesplit, # dwindle"
