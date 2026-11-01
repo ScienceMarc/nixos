@@ -43,6 +43,18 @@
     playerctl # Deal with media keys
   ];
 
+  xdg.configFile."anyrun/config.ron".text = ''
+    Config(
+      plugins: [
+        "${pkgs.anyrun}/lib/librink.so",
+        "${pkgs.anyrun}/lib/libapplications.so",
+        "${pkgs.anyrun}/lib/libsymbols.so",
+        "${pkgs.anyrun}/lib/libshell.so",
+        "${pkgs.anyrun}/lib/libtranslate.so",
+      ],
+    )
+  '';
+
   # home.sessionVariables = {
   #     "NIXOS_OZONE_WL" = "1";
   #     "ELECTRON_OZONE_PLATFORM_HINT" = "auto";
